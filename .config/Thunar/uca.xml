@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<unique-id>1612652495544558-1</unique-id>
+	<command>alacritty --working-directory %f</command>
+	<description>Example for a custom action</description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>folder-oomox-tar</icon>
+	<name>Extract here (zip)</name>
+	<unique-id>1614539428407963-1</unique-id>
+	<command>unzip %f</command>
+	<description></description>
+	<patterns>*.zip</patterns>
+	<startup-notify/>
+	<other-files/>
+</action>
+<action>
+	<icon>folder-oomox-tar</icon>
+	<name>Extract here (bzip2)</name>
+	<unique-id>1614539685699313-2</unique-id>
+	<command>tar xjf %n</command>
+	<description></description>
+	<patterns>*.tar.bz2;*.tbz2</patterns>
+	<startup-notify/>
+	<other-files/>
+</action>
+<action>
+	<icon>folder-oomox-tar</icon>
+	<name>Create tar.gz from folder</name>
+	<unique-id>1614539810693451-3</unique-id>
+	<command>tar czvf %n.tar.gz %n</command>
+	<description></description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>folder-oomox-tar</icon>
+	<name>Create zip from folder</name>
+	<unique-id>1614539953288418-4</unique-id>
+	<command>zip -r %n.zip %n</command>
+	<description></description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>application-pdf</icon>
+	<name>Export to PDF</name>
+	<unique-id>1614540451985870-7</unique-id>
+	<command>unoconv -f pdf %F</command>
+	<description></description>
+	<patterns>*.doc;*.docx;*.odt;*.odp;*.pps;*.ppt;*.xls;*.xlsx;*.ods;*.pptx</patterns>
+	<other-files/>
+</action>
+<action>
+	<icon>image-x-generic</icon>
+	<name>Convert to JPEG</name>
+	<unique-id>1614540690649587-8</unique-id>
+	<command>convert %f -quality 75 %f.jpg</command>
+	<description></description>
+	<patterns>*</patterns>
+</action>
+<action>
+	<icon>folder-oomox-tar</icon>
+	<name>Extract here (tar.gz)</name>
+	<unique-id>1614540811395340-9</unique-id>
+	<command>tar xzf %n</command>
+	<description></description>
+	<patterns>*tar.gz</patterns>
+	<startup-notify/>
+	<other-files/>
+</action>
+</actions>

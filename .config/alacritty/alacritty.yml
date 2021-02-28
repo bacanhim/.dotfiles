@@ -1,23 +1,28 @@
 colors:
   # Default colors
   primary:
-    background: '0x1a1a1a'
+    background: '0x1A1A1A'
     foreground: '0xeeffff'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0x1A1A1A'
+    cursor: '0xeeffff'
 
   # Normal colors
   normal:
-    black:   '0x000000'
+    black:   '0x1A1A1A'
     red:     '0xff5370'
     green:   '0xc3e88d'
     yellow:  '0xffcb6b'
     blue:    '0x82aaff'
     magenta: '0xc792ea'
     cyan:    '0x89ddff'
-    white:   '0xffffff'
+    white:   '0xeeffff'
 
   # Bright colors
   bright:
-    black:   '0x545454'
+    black:   '0x848c8c'
     red:     '0xff5370'
     green:   '0xc3e88d'
     yellow:  '0xffcb6b'
@@ -26,3 +31,14 @@ colors:
     cyan:    '0x89ddff'
     white:   '0xffffff'
 
+  indexed_colors:
+    - { index: 16, color: '0xffcb6b' }
+    - { index: 17, color: '0xeb7b59' }
+    - { index: 18, color: '0x000000' }
+    - { index: 19, color: '0x545454' }
+    - { index: 20, color: '0x2e2e2e' }
+    - { index: 21, color: '0xffffff' }
+font:
+  normal:
+    family: Fira Code
+  size: 12

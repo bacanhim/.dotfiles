@@ -1,10 +1,8 @@
 # Dependencies
 `feh`
-`ttf-font-awesome`
-`materia-gtk-theme`
 `lxappereance`
 `polybar`
-`yaru-remix-icon-theme`
 `rofi`
+`playerctl`
 
-# ALL CREDITS BELONG TO THE CREATORS, I JUST MADE PERSONAL PREFERENCES AJUSTMENTS. 
+# ALL CREDITS BELONG TO THE CREATORS, I JUST MADE PERSONAL PREFERENCES AJUSTMENTS.
