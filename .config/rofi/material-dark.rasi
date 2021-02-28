@@ -1,0 +1,104 @@
+/*
+ * ROFI color theme
+ *
+ * Based on the Materia Color Scheme by Grant Handy (https://github.com/DefunctLizard/materia-rofi-theme)
+ * 
+ * Colors by Material Dark Theme (https://www.material-theme.com/docs/reference/color-palette/)
+ * Created by Helder Bacanhim
+ */
+
+* {
+	bg-color: #212121;
+	bg-color2: #292929;
+	bg-selected: #00BCD4;
+	text: #FFFFFF;
+	text-focus: #171717;
+
+	spacing: 0;
+	background-color: transparent;
+
+	font: "Roboto 13";
+}
+
+window {
+	/*fullscreen: true;*/
+	background-color: @bg-color;
+}
+
+mainbox {
+	children: [inputbar, message, listview];
+	spacing: 30px;
+	/*margin: 20%;*/
+	padding: 30px 0;
+}
+
+inputbar {
+	padding: 0 30px;
+	children: [textbox-prompt-colon, entry, case-indicator];
+}
+
+prompt {
+	text-color: @bg-selected;
+}
+
+textbox-prompt-colon {
+	expand: false;
+	str: ":";
+	margin: 0 1ch 0 0;
+	text-color: @text;
+}
+
+entry {
+	text-color: @text;
+}
+
+
+sidebar, message {
+	border: 1px 0;
+	border-color: @bg-selected;
+}
+
+button, textbox {
+	background-color: @bg-color2;
+	text-color: @text;
+	padding: 5px;
+}
+
+button selected {
+	background-color: @bg-selected;
+}
+
+listview {
+	scrollbar: true;
+	margin: 0 10px 0 30px;
+}
+
+element {
+	padding: 5px;
+	highlight: bold underline;
+}
+
+element normal {
+	background-color: transparent;
+}
+
+element selected {
+	background-color: @bg-selected;
+}
+
+element alternate {
+	background-color: @bg-color2;
+}
+
+element normal normal, element selected normal, element alternate normal {
+	text-color: @text;
+}
+
+element normal active, element selected active, element alternate active {
+	text-color: @text-focus;
+}
+
+element-icon { 
+	size: 27px ; 
+}
+

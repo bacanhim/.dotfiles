@@ -1,0 +1,4 @@
+configuration {
+ modi: "drun,ssh,window";
+ theme: "material-dark";
+ }
