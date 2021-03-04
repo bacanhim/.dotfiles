@@ -1,21 +1,3 @@
-;==========================================================
-;
-;
-;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
-;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
-;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
-;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
-;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
-;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
-;
-;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/polybar/polybar
-;
-;   The README contains a lot of information
-;
-;==========================================================
-
 [colors]
 ;background = ${xrdb:color0:#222}
 background = #222
@@ -23,6 +5,12 @@ background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
+icons-red = #f00
+icons-green = #8ab251
+icons-reboot = #009900
+icons-poweroff = #cb0000
+icons-grey = #c6c6c6
+
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
@@ -30,7 +18,7 @@ alert = #bd2c40
 [bar/top]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 25
+height = 27
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 6.0
@@ -46,7 +34,7 @@ border-size = 0
 border-color = #00000000
 
 padding-left = 0
-padding-right = 1
+padding-right = 0
 
 module-margin-left = 1
 module-margin-right = 1
@@ -54,13 +42,16 @@ module-margin-right = 1
 font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
+font-3 = Font Awesome 5 Free:pixelsize=12;2
+font-4 = Font Awesome 5 Free Solid:pixelsize=12;2
+font-5 = Font Awesome 5 Brands:pixelsize=12;2
 
 modules-left = i3
 modules-center =
-modules-right = spotify pacman-updates pulseaudio filesystem xkeyboard eth memory cpu temperature date powermenu
+modules-right = spotify pulseaudio pacman-updates filesystem xkeyboard eth memory cpu temperature date powermenu
 
 tray-position = right
-tray-padding = 2
+tray-padding = 0
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
@@ -81,12 +72,15 @@ cursor-scroll = ns-resize
 type = custom/script
 exec = checkupdates | wc -l
 interval = 1000
-label = Updates: %output%
+label = " %output%"
+format-prefix = 
+format-prefix-foreground = ${colors.icons-red}
+click-right = exec alacritty -e sudo pacman -Syu
 
 [module/spotify]
 type = custom/script
 interval = 1
-format-prefix = " "
+format-prefix = " "
 format = <label>
 exec = python $HOME/.config/polybar/scripts/spotify.py -f '{artist}: {song}'
 format-underline = #1db954
@@ -99,8 +93,8 @@ label = %title:0:30:...%
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = " "
+format-prefix-foreground =
 format-prefix-underline = ${colors.secondary}
 
 label-layout = %layout%
@@ -117,7 +111,8 @@ interval = 25
 
 mount-0 = /
 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-mounted =  %free%
+label-mounted-foreground = ${colors.colors-grey}
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -149,6 +144,17 @@ format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
 
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
 
@@ -157,42 +163,28 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
+label-focused = %icon%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+label-unfocused = %icon%
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %icon%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = %icon%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 ; Separator in between workspaces
 ; label-separator = |
-
-
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
 
 [module/xbacklight]
 type = internal/xbacklight
@@ -218,17 +210,17 @@ card = intel_backlight
 
 [module/cpu]
 type = internal/cpu
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+interval = 1
+format-prefix = " "
+format-prefix-foreground = ${colors.icons-grey}
 format-underline = #f90000
 label = %percentage:2%%
 
 [module/memory]
 type = internal/memory
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+interval = 1
+format-prefix = " "
+format-prefix-foreground = ${colors.icons-grey}
 format-underline = #4bffdc
 label = %mb_used%
 
@@ -260,8 +252,8 @@ interface = enp5s0
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.icons-grey}
 label-connected = %local_ip%
 
 format-disconnected =
@@ -280,8 +272,8 @@ date-alt = " %d-%m-%Y"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = 
+format-prefix-foreground = ${colors.icons-grey}
 format-underline = #0a6cf5
 
 label = %date% %time%
@@ -289,12 +281,16 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
+format-volume = <ramp-volume> <bar-volume>
+label-volume = <ramp-volume> %percentage%%
 label-volume-foreground = ${root.foreground}
-
-label-muted = 🔇 muted
+click-right = pavucontrol
+label-muted =  MUTED
 label-muted-foreground = #666
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
@@ -380,18 +376,20 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
+format-underline = ${colors.icons-green}
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+format-warn-underline = ${colors.icons-red}
 
 label = %temperature-c%
 label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
+label-warn-foreground = ${colors.icons-red}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.icons-grey}
+ramp-1-foreground = ${colors.icons-green}
+ramp-2-foreground = ${colors.icons-red}
 
 [module/powermenu]
 type = custom/menu
@@ -400,27 +398,22 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
+label-open = 
+label-open-foreground = ${colors.icons-poweroff}
+label-close =  CANCEL
+label-close-foreground = ${colors.icons-grey}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+menu-0-0 =  LOGOUT
+menu-0-0-exec = i3-msg exit
+menu-0-0-foreground = ${colors.icons-blue}
+menu-0-1 =  REBOOT
+menu-0-1-foreground = ${colors.icons-reboot}
+menu-0-1-exec = systemctl reboot
+menu-0-2 =  POWER OFF
+menu-0-2-foreground = ${colors.icons-poweroff}
+menu-0-2-exec = systemctl poweroff
 
 [settings]
 screenchange-reload = true
