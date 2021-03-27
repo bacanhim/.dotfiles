@@ -107,8 +107,15 @@ arch-chroot /mnt runuser -l bacanhim -c 'ssh-keygen -t ed25519 -C "Gitlab"'
 arch-chroot /mnt echo "bacanhim ALL=(ALL) NOPASSWD:ALL" >> /mnt/etc/sudoers
 arch-chroot /mnt runuser -l bacanhim -c "cd /tmp && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm"
 arch-chroot /mnt runuser -l bacanhim -c 'yay -S polybar betterlockscreen-git spotify --noconfirm'
-arch-chroot /mnt runuser -l bacanhim -c "cd ~ && git clone git@gitlab.com:bacanhim/dotfiles.git"
-arch-chroot /mnt runuser -l bacanhim -c "cd ~ && cp -r dotfiles/.config/ dotfiles/.icons dotfiles/.themes/ . && rm -r dotfiles"
-arch-chroot /mnt runuser -l bacanhim -c "cd ~ && tar xzf .themes/materia-dark_blueish.tar.gz && rm .themes/materia-dark_blueish.tar.gz"
-arch-chroot /mnt runuser -l bacanhim -c "cd ~ && tar xzf .icons/oomox-materia-dark_blueish.tar.gz && rm .icons/oomox-materia-dark_blueish.tar.gz && betterlockscreen -u $HOME/.config/i3/wall.jpg"
+echo "DOWNLOADING AND APPLYING DOTFILES"
+sleep 5
+arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/ && git clone https://gitlab.com/bacanhim/dotfiles.git"
+arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/ && sudo cp -r /home/bacanhim/dotfiles/.config/ /home/bacanhim/dotfiles/.icons/ /home/bacanhim/dotfiles/.themes/ . && sudo rm -r /home/bacanhim/dotfiles"
+arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/.themes && sudo tar xzf /home/bacanhim/.themes/materia-dark_blueish.tar.gz && sudo rm /home/bacanhim/.themes/materia-dark_blueish.tar.gz"
+arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/.icons/ && sudo tar xzf /home/bacanhim/.icons/oomox-materia-dark_blueish.tar.gz && sudo rm /home/bacanhim/.icons/oomox-materia-dark_blueish.tar.gz && betterlockscreen -u /home/bacanhim/.config/i3/wall.jpg"
 arch-chroot /mnt sed -i "s\bacanhim ALL=(ALL) NOPASSWD:ALL\ \g" /etc/sudoers
+echo "ALL DONE REBOOTING"
+sleep 10
+umount -a
+sleep 2
+reboot
