@@ -84,11 +84,8 @@ echo "BACANHIM PASSWORD"
 arch-chroot /mnt passwd bacanhim
 arch-chroot /mnt sed -i "s\# %wheel ALL=(ALL) ALL\%wheel ALL=(ALL) ALL\g" /etc/sudoers
 arch-chroot /mnt pacman -S snapper ntfs-3g --noconfirm
-arch-chroot /mnt systemctl start snapper-timeline.timer
 arch-chroot /mnt systemctl enable snapper-timeline.timer
 arch-chroot /mnt systemctl enable snapper-cleanup.timer
-arch-chroot /mnt systemctl start snapper-cleanup.timer
-arch-chroot /mnt systemctl start grub-btrfs.path
 arch-chroot /mnt systemctl enable grub-btrfs.path
 sleep 5
 clear
