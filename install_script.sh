@@ -31,13 +31,13 @@ btrfs su create /mnt/@tmp
 btrfs su create /mnt/@swap
 btrfs su create /mnt/@.snapshots
 umount /mnt
-mount -o noatime,compress=ZSTD,space_cache,subvol=@ /dev/mapper/lynx /mnt
+mount -o noatime,compress=zstd,space_cache,subvol=@ /dev/mapper/lynx /mnt
 mkdir /mnt/{boot,home,var,srv,tmp,opt,swap,.snapshots}
-mount -o noatime,compress=ZSTD,space_cache,subvol=@home /dev/mapper/lynx /mnt/home
-mount -o noatime,compress=ZSTD,space_cache,subvol=@srv /dev/mapper/lynx /mnt/srv
-mount -o noatime,compress=ZSTD,space_cache,subvol=@tmp /dev/mapper/lynx /mnt/tmp
-mount -o noatime,compress=ZSTD,space_cache,subvol=@opt /dev/mapper/lynx /mnt/opt
-mount -o noatime,compress=ZLIB,space_cache,subvol=@.snapshots /dev/mapper/lynx /mnt/.snapshots
+mount -o noatime,compress=zstd,space_cache,subvol=@home /dev/mapper/lynx /mnt/home
+mount -o noatime,compress=zstd,space_cache,subvol=@srv /dev/mapper/lynx /mnt/srv
+mount -o noatime,compress=zstd,space_cache,subvol=@tmp /dev/mapper/lynx /mnt/tmp
+mount -o noatime,compress=zstd,space_cache,subvol=@opt /dev/mapper/lynx /mnt/opt
+mount -o noatime,compress=zlib,space_cache,subvol=@.snapshots /dev/mapper/lynx /mnt/.snapshots
 mount -o nodatacow,subvol=@swap /dev/mapper/lynx /mnt/swap
 mount -o nodatacow,subvol=@var /dev/mapper/lynx /mnt/var
 mount /dev/"${Disk}"\1 /mnt/boot
