@@ -51,7 +51,7 @@ clear
 arch-chroot /mnt truncate -s 0 /swap/swapfile
 arch-chroot /mnt chattr +C /swap/swapfile
 arch-chroot /mnt btrfs property set swap/swapfile compression none
-arch-chroot /mnt dd if=dev/zero of=/swap/swapfile bs=1G count=1 status=progress
+arch-chroot /mnt dd if=dev/zero of=/swap/swapfile bs=1G count=16 status=progress
 arch-chroot /mnt chmod 600 /swap/swapfile
 arch-chroot /mnt mkswap /swap/swapfile
 arch-chroot /mnt swapon /swap/swapfile
