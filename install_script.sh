@@ -66,8 +66,6 @@ arch-chroot /mnt echo "127.0.0.1       localhost lynx" >> /mnt/etc/hosts
 arch-chroot /mnt echo "::1             localhost lynx " >> /mnt/etc/hosts
 sleep 5
 clear
-echo "ROOT PASSWORD"
-arch-chroot /mnt passwd
 arch-chroot /mnt reflector -c Portugal -a 6 --sort rate  --save /etc/pacman.d/mirrorlist
 arch-chroot /mnt pacman -S grub grub-btrfs efibootmgr networkmanager network-manager-applet wpa_supplicant dialog os-prober mtools dosfstools linux-headers git xdg-utils xdg-user-dirs --noconfirm
 arch-chroot /mnt sed -i -e 's\GRUB_CMDLINE_LINUX=""\GRUB_CMDLINE_LINUX="cryptdevice=/dev/'"${Disk}"'2:lynx"\g' /etc/default/grub
@@ -93,6 +91,8 @@ arch-chroot /mnt pacman -S nvidia nvidia-utils nvidia-settings --noconfirm
 arch-chroot /mnt pacman -S alacritty perl-json-xs perl-anyevent-i3 rofi i3-gaps stow playerctl ttf-font-awesome thunar feh lxappearance zsh code firefox --noconfirm
 sleep 15
 clear
+echo "ROOT PASSWORD"
+arch-chroot /mnt passwd
 arch-chroot /mnt useradd -mG wheel bacanhim -s /usr/bin/zsh
 echo "BACANHIM PASSWORD"
 arch-chroot /mnt passwd bacanhim
