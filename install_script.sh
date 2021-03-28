@@ -77,11 +77,8 @@ arch-chroot /mnt mkinitcpio -p linux
 arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB /dev/"${Disk}"\1
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 arch-chroot /mnt systemctl enable NetworkManager
-arch-chroot /mnt useradd -mG wheel bacanhim -s /usr/bin/zsh
 sleep 5
 clear
-echo "BACANHIM PASSWORD"
-arch-chroot /mnt passwd bacanhim
 arch-chroot /mnt sed -i "s\# %wheel ALL=(ALL) ALL\%wheel ALL=(ALL) ALL\g" /etc/sudoers
 arch-chroot /mnt pacman -S snapper ntfs-3g --noconfirm
 arch-chroot /mnt systemctl enable snapper-timeline.timer
@@ -96,6 +93,9 @@ arch-chroot /mnt pacman -S nvidia nvidia-utils nvidia-settings --noconfirm
 arch-chroot /mnt pacman -S alacritty perl-json-xs perl-anyevent-i3 rofi i3-gaps stow playerctl ttf-font-awesome thunar feh lxappearance zsh code firefox --noconfirm
 sleep 15
 clear
+arch-chroot /mnt useradd -mG wheel bacanhim -s /usr/bin/zsh
+echo "BACANHIM PASSWORD"
+arch-chroot /mnt passwd bacanhim
 arch-chroot /mnt chsh -s $(which zsh)
 arch-chroot /mnt runuser -l bacanhim -c 'git config --global user.name "Helder Bacanhim"'
 arch-chroot /mnt runuser -l bacanhim -c 'git config --global user.email "6317993-bacanhim@users.noreply.gitlab.com"'
