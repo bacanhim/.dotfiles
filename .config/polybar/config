@@ -80,10 +80,8 @@ blacklist-0 = num lock
 
 format-prefix = " "
 format-prefix-foreground =
-format-prefix-underline = ${colors.secondary}
 
 label-layout = %layout%
-label-layout-underline = ${colors.secondary}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
