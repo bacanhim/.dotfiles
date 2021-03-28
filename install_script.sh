@@ -58,7 +58,7 @@ arch-chroot /mnt swapon /swap/swapfile
 arch-chroot /mnt echo /swap/swapfile none swap defaults 0 0 >> /mnt/etc/fstab
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Lisbon /etc/localtime
 arch-chroot /mnt hwclock --systohc
-arch-chroot /mnt sed -i "s/#en_US.UTF-8/en_US.UTF-8/g" /etc/locale.gen
+arch-chroot /mnt sed -i "s/#en_US.UTF-8/en_US.UTF-8/g" /mnt/etc/locale.gen
 arch-chroot /mnt locale-gen
 arch-chroot /mnt echo LANG=en_US.UTF-8 >> /mnt/etc/locale.conf
 arch-chroot /mnt echo lynx >> /mnt/etc/hostname
@@ -77,11 +77,8 @@ arch-chroot /mnt mkinitcpio -p linux
 arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB /dev/"${Disk}"\1
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 arch-chroot /mnt systemctl enable NetworkManager
-arch-chroot /mnt useradd -mG wheel bacanhim
 sleep 5
 clear
-echo "BACANHIM PASSWORD"
-arch-chroot /mnt passwd bacanhim
 arch-chroot /mnt sed -i "s\# %wheel ALL=(ALL) ALL\%wheel ALL=(ALL) ALL\g" /etc/sudoers
 arch-chroot /mnt pacman -S snapper ntfs-3g --noconfirm
 arch-chroot /mnt systemctl enable snapper-timeline.timer
@@ -93,23 +90,23 @@ arch-chroot /mnt pacman -Syu
 arch-chroot /mnt pacman -S xorg xorg-server lightdm lightdm-gtk-greeter openssh --noconfirm
 arch-chroot /mnt systemctl enable lightdm
 arch-chroot /mnt pacman -S nvidia nvidia-utils nvidia-settings --noconfirm
-arch-chroot /mnt pacman -S alacritty perl-json-xs perl-anyevent-i3 rofi i3-gaps playerctl ttf-font-awesome feh lxappearance zsh code firefox --noconfirm
+arch-chroot /mnt pacman -S alacritty perl-json-xs perl-anyevent-i3 rofi i3-gaps stow playerctl ttf-font-awesome thunar feh lxappearance zsh code firefox --noconfirm
 sleep 15
 clear
-arch-chroot /mnt runuser -l bacanhim -c 'chsh -s $(which zsh)'
+arch-chroot /mnt useradd -mG wheel bacanhim -s /usr/bin/zsh
+echo "BACANHIM PASSWORD"
+arch-chroot /mnt passwd bacanhim
 arch-chroot /mnt chsh -s $(which zsh)
 arch-chroot /mnt runuser -l bacanhim -c 'git config --global user.name "Helder Bacanhim"'
 arch-chroot /mnt runuser -l bacanhim -c 'git config --global user.email "6317993-bacanhim@users.noreply.gitlab.com"'
 arch-chroot /mnt runuser -l bacanhim -c 'ssh-keygen -t ed25519 -C "Gitlab"'
 arch-chroot /mnt echo "bacanhim ALL=(ALL) NOPASSWD:ALL" >> /mnt/etc/sudoers
 arch-chroot /mnt runuser -l bacanhim -c "cd /tmp && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm"
-arch-chroot /mnt runuser -l bacanhim -c 'yay -S polybar betterlockscreen-git spotify --noconfirm'
+arch-chroot /mnt runuser -l bacanhim -c 'yay -S polybar consolas-font noto-fonts-main betterlockscreen-git spotify --noconfirm'
 echo "DOWNLOADING AND APPLYING DOTFILES"
 sleep 5
-arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/ && git clone https://gitlab.com/bacanhim/dotfiles.git"
-arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/ && sudo cp -r /home/bacanhim/dotfiles/.config/ /home/bacanhim/dotfiles/.icons/ /home/bacanhim/dotfiles/.themes/ . && sudo rm -r /home/bacanhim/dotfiles"
-arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/.themes && sudo tar xzf /home/bacanhim/.themes/materia-dark_blueish.tar.gz && sudo rm /home/bacanhim/.themes/materia-dark_blueish.tar.gz"
-arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/.icons/ && sudo tar xzf /home/bacanhim/.icons/oomox-materia-dark_blueish.tar.gz && sudo rm /home/bacanhim/.icons/oomox-materia-dark_blueish.tar.gz && betterlockscreen -u /home/bacanhim/.config/i3/wall.jpg"
+arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/ && git clone https://gitlab.com/bacanhim/.dotfiles.git"
+arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/.dotfiles && stow *"
 arch-chroot /mnt sed -i "s\bacanhim ALL=(ALL) NOPASSWD:ALL\ \g" /etc/sudoers
 echo "ALL DONE REBOOTING"
 sleep 10
