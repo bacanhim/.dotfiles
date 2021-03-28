@@ -208,8 +208,8 @@ new_window 1pixel
 exec xinput set-prop 11 301 -1
 
 #Window colors
-set $bgcolor    #FF9800
-set $ibgcolor   #a1a1a1
+set $bgcolor    #bcecff
+set $ibgcolor   #4a4a4a
 set $textcolor  #ffffff
 set $ubgcolor   #ff2800
 

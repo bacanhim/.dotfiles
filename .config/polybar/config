@@ -11,7 +11,7 @@ icons-reboot = #009900
 icons-poweroff = #cb0000
 icons-grey = #c6c6c6
 
-primary = #ffb52a
+primary = #bcecff
 secondary = #e60053
 alert = #bd2c40
 
