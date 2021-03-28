@@ -58,7 +58,7 @@ arch-chroot /mnt swapon /swap/swapfile
 arch-chroot /mnt echo /swap/swapfile none swap defaults 0 0 >> /mnt/etc/fstab
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Lisbon /etc/localtime
 arch-chroot /mnt hwclock --systohc
-arch-chroot /mnt sed -i "s/#en_US.UTF-8/en_US.UTF-8/g" /mnt/etc/locale.gen
+arch-chroot /mnt sed -i "s/#en_US.UTF-8/en_US.UTF-8/g" /etc/locale.gen
 arch-chroot /mnt locale-gen
 arch-chroot /mnt echo LANG=en_US.UTF-8 >> /mnt/etc/locale.conf
 arch-chroot /mnt echo lynx >> /mnt/etc/hostname
@@ -88,7 +88,7 @@ arch-chroot /mnt pacman -Syu
 arch-chroot /mnt pacman -S xorg xorg-server lightdm lightdm-gtk-greeter openssh --noconfirm
 arch-chroot /mnt systemctl enable lightdm
 arch-chroot /mnt pacman -S nvidia nvidia-utils nvidia-settings --noconfirm
-arch-chroot /mnt pacman -S alacritty perl-json-xs perl-anyevent-i3 rofi i3-gaps stow playerctl ttf-font-awesome thunar feh lxappearance zsh code firefox --noconfirm
+arch-chroot /mnt pacman -S alacritty perl-json-xs perl-anyevent-i3 rofi i3-gaps stow playerctl ttf-font-awesome thunar feh lxappearance zsh code firefox materia-gtk-theme papirus-icon-theme --noconfirm
 sleep 15
 clear
 echo "ROOT PASSWORD"
