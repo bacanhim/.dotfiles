@@ -83,7 +83,6 @@ interval = 1
 format-prefix = " "
 format = <label>
 exec = python $HOME/.config/polybar/scripts/spotify.py -f '{artist}: {song}'
-format-underline = #1db954
 
 [module/xwindow]
 type = internal/xwindow
@@ -213,7 +212,6 @@ type = internal/cpu
 interval = 1
 format-prefix = " "
 format-prefix-foreground = ${colors.icons-grey}
-format-underline = #f90000
 label = %percentage:2%%
 
 [module/memory]
@@ -221,7 +219,6 @@ type = internal/memory
 interval = 1
 format-prefix = " "
 format-prefix-foreground = ${colors.icons-grey}
-format-underline = #4bffdc
 label = %mb_used%
 
 [module/wlan]
@@ -274,7 +271,6 @@ time-alt = %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.icons-grey}
-format-underline = #0a6cf5
 
 label = %date% %time%
 
@@ -376,7 +372,6 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = ${colors.icons-green}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${colors.icons-red}
 
