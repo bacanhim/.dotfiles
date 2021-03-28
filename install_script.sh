@@ -58,7 +58,7 @@ arch-chroot /mnt swapon /swap/swapfile
 arch-chroot /mnt echo /swap/swapfile none swap defaults 0 0 >> /mnt/etc/fstab
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Lisbon /etc/localtime
 arch-chroot /mnt hwclock --systohc
-arch-chroot /mnt sed -i "s/#en_US.UTF-8/en_US.UTF-8/g" /mnt/etc/locale.gen
+arch-chroot /mnt sed -i "s/#en_US.UTF-8/en_US.UTF-8/g" /etc/locale.gen
 arch-chroot /mnt locale-gen
 arch-chroot /mnt echo LANG=en_US.UTF-8 >> /mnt/etc/locale.conf
 arch-chroot /mnt echo lynx >> /mnt/etc/hostname
