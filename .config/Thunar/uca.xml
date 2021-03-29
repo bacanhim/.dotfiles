@@ -11,7 +11,7 @@
 	<directories/>
 </action>
 <action>
-	<icon>folder-oomox-tar</icon>
+	<icon>folder-tar</icon>
 	<name>Extract here (zip)</name>
 	<unique-id>1614539428407963-1</unique-id>
 	<command>unzip %f</command>
@@ -21,7 +21,7 @@
 	<other-files/>
 </action>
 <action>
-	<icon>folder-oomox-tar</icon>
+	<icon>folder-tar</icon>
 	<name>Extract here (bzip2)</name>
 	<unique-id>1614539685699313-2</unique-id>
 	<command>tar xjf %n</command>
@@ -31,7 +31,7 @@
 	<other-files/>
 </action>
 <action>
-	<icon>folder-oomox-tar</icon>
+	<icon>folder-tar</icon>
 	<name>Create tar.gz from folder</name>
 	<unique-id>1614539810693451-3</unique-id>
 	<command>tar czvf %n.tar.gz %n</command>
@@ -41,7 +41,7 @@
 	<directories/>
 </action>
 <action>
-	<icon>folder-oomox-tar</icon>
+	<icon>folder-tar</icon>
 	<name>Create zip from folder</name>
 	<unique-id>1614539953288418-4</unique-id>
 	<command>zip -r %n.zip %n</command>
@@ -68,7 +68,7 @@
 	<patterns>*</patterns>
 </action>
 <action>
-	<icon>folder-oomox-tar</icon>
+	<icon>folder-tar</icon>
 	<name>Extract here (tar.gz)</name>
 	<unique-id>1614540811395340-9</unique-id>
 	<command>tar xzf %n</command>

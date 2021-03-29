@@ -192,7 +192,7 @@ type = internal/memory
 interval = 1
 format-prefix = " "
 format-prefix-foreground = ${colors.icons-grey}
-label = %mb_used%
+label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
@@ -234,18 +234,14 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 1
 
-date =
-date-alt = " %d-%m-%Y"
+date = %a, %e %b
+date-alt = %A, %e %B, %Y
 
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
-format-prefix-foreground = ${colors.icons-grey}
-
-label = %date% %time%
+label = %date%   %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
