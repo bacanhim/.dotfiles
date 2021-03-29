@@ -191,7 +191,8 @@ bindsym $mod+Shift+x exec betterlockscreen -l dim
 #find class name xprop -> click wanted window and find for wm_class(string) always the second name
 assign [class="firefox"] $ws1
 assign [class="code"] $ws2
-assign [class="Spotify"] $ws9
+assign [class="thunar"] $ws3
+for_window [class="Spotify"] move to workspace $ws9
 assign [class="TeamSpeak 3"] $ws10
 
 #Polybar Startup
