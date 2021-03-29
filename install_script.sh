@@ -102,7 +102,7 @@ arch-chroot /mnt runuser -l bacanhim -c 'git config --global user.email "6317993
 arch-chroot /mnt runuser -l bacanhim -c 'ssh-keygen -t ed25519 -C "Gitlab"'
 arch-chroot /mnt echo "bacanhim ALL=(ALL) NOPASSWD:ALL" >> /mnt/etc/sudoers
 arch-chroot /mnt runuser -l bacanhim -c "cd /tmp && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm"
-arch-chroot /mnt runuser -l bacanhim -c 'yay -S polybar gksu consolas-font noto-fonts-main betterlockscreen-git spotify --noconfirm'
+arch-chroot /mnt runuser -l bacanhim -c 'yay -S polybar gksu snapper-gui-git consolas-font noto-fonts-main betterlockscreen-git spotify --noconfirm'
 echo "DOWNLOADING AND APPLYING DOTFILES"
 sleep 5
 arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/ && git clone https://gitlab.com/bacanhim/.dotfiles.git"
