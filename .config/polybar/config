@@ -97,7 +97,7 @@ interval = 25
 mount-0 = /
 
 label-mounted =  %free%
-label-mounted-foreground = ${colors.colors-grey}
+label-mounted-foreground = ${colors.icons-grey}
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -371,7 +371,7 @@ label-separator-foreground = ${colors.foreground-alt}
 
 menu-0-0 =  LOGOUT
 menu-0-0-exec = i3-msg exit
-menu-0-0-foreground = ${colors.icons-blue}
+menu-0-0-foreground = ${colors.icons-grey}
 menu-0-1 =  REBOOT
 menu-0-1-foreground = ${colors.icons-reboot}
 menu-0-1-exec = systemctl reboot
