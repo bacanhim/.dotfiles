@@ -192,7 +192,7 @@ type = internal/memory
 interval = 1
 format-prefix = " "
 format-prefix-foreground = ${colors.icons-grey}
-label = %percentage_used%%
+label = %gb_used%
 
 [module/wlan]
 type = internal/network
