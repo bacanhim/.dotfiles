@@ -88,7 +88,7 @@ arch-chroot /mnt pacman -Syu
 arch-chroot /mnt pacman -S xorg xorg-server lightdm lightdm-gtk-greeter openssh --noconfirm
 arch-chroot /mnt systemctl enable lightdm
 arch-chroot /mnt pacman -S nvidia nvidia-utils nvidia-settings --noconfirm
-arch-chroot /mnt pacman -S alacritty perl-json-xs perl-anyevent-i3 rofi i3-gaps neofetch stow playerctl capitaine-cursors ttf-font-awesome flameshot thunar feh lxappearance zsh code firefox materia-gtk-theme papirus-icon-theme --noconfirm
+arch-chroot /mnt pacman -S alacritty perl-json-xs perl-anyevent-i3 pacman-contrib python-dbus rofi i3-gaps neofetch stow playerctl capitaine-cursors ttf-font-awesome flameshot thunar feh lxappearance zsh code firefox materia-gtk-theme papirus-icon-theme --noconfirm
 sleep 15
 clear
 echo "ROOT PASSWORD"
@@ -102,7 +102,7 @@ arch-chroot /mnt runuser -l bacanhim -c 'git config --global user.email "6317993
 arch-chroot /mnt runuser -l bacanhim -c 'ssh-keygen -t ed25519 -C "Gitlab"'
 arch-chroot /mnt echo "bacanhim ALL=(ALL) NOPASSWD:ALL" >> /mnt/etc/sudoers
 arch-chroot /mnt runuser -l bacanhim -c "cd /tmp && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm"
-arch-chroot /mnt runuser -l bacanhim -c 'yay -S polybar consolas-font noto-fonts-main betterlockscreen-git spotify --noconfirm'
+arch-chroot /mnt runuser -l bacanhim -c 'yay -S polybar gksu consolas-font noto-fonts-main betterlockscreen-git spotify --noconfirm'
 echo "DOWNLOADING AND APPLYING DOTFILES"
 sleep 5
 arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/ && git clone https://gitlab.com/bacanhim/.dotfiles.git"
