@@ -106,7 +106,7 @@ arch-chroot /mnt runuser -l bacanhim -c 'yay -S polybar consolas-font noto-fonts
 echo "DOWNLOADING AND APPLYING DOTFILES"
 sleep 5
 arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/ && git clone https://gitlab.com/bacanhim/.dotfiles.git"
-arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/.dotfiles && stow *"
+arch-chroot /mnt runuser -l bacanhim -c 'cd /home/bacanhim/.dotfiles && stow --target="$HOME" --no-folding .'
 arch-chroot /mnt sed -i "s\bacanhim ALL=(ALL) NOPASSWD:ALL\ \g" /etc/sudoers
 echo "ALL DONE REBOOTING"
 sleep 10
