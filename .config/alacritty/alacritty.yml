@@ -561,5 +561,5 @@ colors:
 
 font:
   normal:
-    family: Fira Code
+    family: consolas
   size: 12

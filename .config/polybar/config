@@ -7,6 +7,7 @@ foreground = #dfdfdf
 foreground-alt = #555
 icons-red = #f00
 icons-green = #8ab251
+green-spotify = #1DB954
 icons-reboot = #009900
 icons-poweroff = #cb0000
 icons-grey = #c6c6c6
@@ -67,6 +68,7 @@ click-right = exec alacritty -e sudo pacman -Syu
 type = custom/script
 interval = 1
 format-prefix = " "
+format-prefix-foreground = ${colors.green-spotify}
 format = <label>
 exec = python $HOME/.config/polybar/scripts/spotify.py -f '{artist}: {song}'
 
