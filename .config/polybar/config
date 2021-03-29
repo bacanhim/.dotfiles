@@ -241,7 +241,7 @@ date-alt = %A, %e %B, %Y
 time = %H:%M
 time-alt = %H:%M:%S
 
-label = %date%   %time%
+label = %date%   %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
