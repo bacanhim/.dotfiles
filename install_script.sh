@@ -88,7 +88,7 @@ arch-chroot /mnt pacman -Syu
 arch-chroot /mnt pacman -S xorg xorg-server lightdm lightdm-gtk-greeter openssh --noconfirm
 arch-chroot /mnt systemctl enable lightdm
 arch-chroot /mnt pacman -S nvidia nvidia-utils nvidia-settings --noconfirm
-arch-chroot /mnt pacman -S alacritty perl-json-xs perl-anyevent-i3 rofi i3-gaps neofetch stow playerctl ttf-font-awesome thunar feh lxappearance zsh code firefox materia-gtk-theme papirus-icon-theme --noconfirm
+arch-chroot /mnt pacman -S alacritty perl-json-xs perl-anyevent-i3 rofi i3-gaps neofetch stow playerctl capitaine-cursors ttf-font-awesome thunar feh lxappearance zsh code firefox materia-gtk-theme papirus-icon-theme --noconfirm
 sleep 15
 clear
 echo "ROOT PASSWORD"
