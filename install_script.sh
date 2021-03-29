@@ -97,8 +97,6 @@ arch-chroot /mnt useradd -mG wheel bacanhim -s /usr/bin/zsh
 echo "BACANHIM PASSWORD"
 arch-chroot /mnt passwd bacanhim
 arch-chroot /mnt chsh -s $(which zsh)
-arch-chroot /mnt runuser -l bacanhim -c 'git config --global user.name "Helder Bacanhim"'
-arch-chroot /mnt runuser -l bacanhim -c 'git config --global user.email "6317993-bacanhim@users.noreply.gitlab.com"'
 arch-chroot /mnt runuser -l bacanhim -c 'ssh-keygen -t ed25519 -C "Gitlab"'
 arch-chroot /mnt echo "bacanhim ALL=(ALL) NOPASSWD:ALL" >> /mnt/etc/sudoers
 arch-chroot /mnt runuser -l bacanhim -c "cd /tmp && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm"
