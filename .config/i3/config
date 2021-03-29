@@ -219,3 +219,6 @@ client.focused          $bgcolor        $bgcolor                $textcolor      
 client.unfocused        $ibgcolor       $ibgcolor               $textcolor      $ibgcolor
 client.focused_inactive $ibgcolor       $ibgcolor               $textcolor      $ibgcolor
 client.urgent           $ubgcolor       $ubgcolor               $textcolor      $ubgcolor
+
+# Dunst
+exec --no-startup-id dunst
