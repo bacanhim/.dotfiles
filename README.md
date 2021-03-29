@@ -62,7 +62,7 @@ directories in your home directory, and only symlink actual files.
 
 - GTK theme: [Materia](https://github.com/nana-4/materia-theme)
 - Cursor theme: [Capitaine cursors](https://github.com/keeferrourke/capitaine-cursors)
-- [Wallpaper](https://unsplash.com/photos/ybw-0_Hfk1I)
+- [Wallpaper](https://unsplash.com/photos/JnB8Gio4GZo)
 
 ![to be added](./screenshots/desktop2.png)
 
