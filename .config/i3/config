@@ -222,3 +222,6 @@ client.urgent           $ubgcolor       $ubgcolor               $textcolor      
 
 # Dunst
 exec --no-startup-id dunst
+
+# Gaps
+gaps inner 3

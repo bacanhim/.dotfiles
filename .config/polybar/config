@@ -44,6 +44,7 @@ font-0 = sans-serif:size=12;3
 font-1 = Font Awesome 5 Free:pixelsize=12;2
 font-2 = Font Awesome 5 Free Solid:pixelsize=12;2
 font-3 = Font Awesome 5 Brands:pixelsize=12;2
+font-4 = unifont:fontformat=truetype:size=8:antialias=false;0
 
 modules-left = i3
 modules-center =
@@ -203,7 +204,6 @@ type = internal/network
 interface = enp5s0
 interval = 3.0
 
-format-connected-underline = #55aa55
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.icons-grey}
 label-connected = %local_ip%
@@ -229,7 +229,6 @@ label = %date%   %time%
 type = internal/pulseaudio
 
 format-volume = <ramp-volume> <bar-volume>
-label-volume = <ramp-volume> %percentage%%
 label-volume-foreground = ${root.foreground}
 click-right = pavucontrol
 label-muted =  MUTED
@@ -256,33 +255,6 @@ bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
-[module/alsa]
-type = internal/alsa
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery

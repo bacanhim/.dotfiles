@@ -84,11 +84,12 @@ arch-chroot /mnt chsh -s $(which zsh)
 arch-chroot /mnt runuser -l bacanhim -c 'ssh-keygen -t ed25519 -C "Gitlab"'
 arch-chroot /mnt echo "bacanhim ALL=(ALL) NOPASSWD:ALL" >> /mnt/etc/sudoers
 arch-chroot /mnt runuser -l bacanhim -c "cd /tmp && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm"
-arch-chroot /mnt runuser -l bacanhim -c 'yay -S polybar gksu snapper-gui-git consolas-font noto-fonts-main betterlockscreen-git spotify --noconfirm'
+arch-chroot /mnt runuser -l bacanhim -c 'yay -S polybar gksu snapper-gui-git ttf-unifont consolas-font noto-fonts-main betterlockscreen-git spotify --noconfirm'
 echo "DOWNLOADING AND APPLYING DOTFILES"
 arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/ && git clone https://gitlab.com/bacanhim/.dotfiles.git"
 arch-chroot /mnt runuser -l bacanhim -c 'cd /home/bacanhim/.dotfiles && stow --target="$HOME" --no-folding .'
 arch-chroot /mnt sed -i "s\bacanhim ALL=(ALL) NOPASSWD:ALL\ \g" /etc/sudoers
+mv /mnt/boot/EFI/BOOT/grubx64.efi /mnt/boot/EFI/BOOT/bootx64.efi
 echo "ALL DONE REBOOTING"
 umount -a
 sleep 2
