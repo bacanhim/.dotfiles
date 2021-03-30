@@ -61,7 +61,7 @@ arch-chroot /mnt pacman -S grub grub-btrfs efibootmgr networkmanager network-man
 arch-chroot /mnt sed -i -e 's\GRUB_CMDLINE_LINUX=""\GRUB_CMDLINE_LINUX="cryptdevice=/dev/'"${Disk}"'2:lynx"\g' /etc/default/grub
 arch-chroot /mnt sed -i "s\MODULES=()\MODULES=(btrfs)\g" /etc/mkinitcpio.conf
 arch-chroot /mnt sed -i "s\HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)\HOOKS=(base udev autodetect modconf block encrypt filesystems keyboard fsck)\g" /etc/mkinitcpio.conf
-arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=boot --recheck
+arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=BOOT --recheck
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 arch-chroot /mnt mkinitcpio -p linux
 arch-chroot /mnt systemctl enable NetworkManager
