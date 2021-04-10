@@ -48,7 +48,7 @@ font-4 = unifont:fontformat=truetype:size=8:antialias=false;0
 
 modules-left = i3
 modules-center =
-modules-right = spotify pulseaudio pacman-updates filesystem xkeyboard eth memory cpu temperature date powermenu
+modules-right = spotify pulseaudio pacman-updates xkeyboard memory cpu date powermenu
 
 tray-position = right
 tray-padding = 0
@@ -63,7 +63,7 @@ interval = 1000
 label = " %output%"
 format-prefix = 
 format-prefix-foreground = ${colors.icons-red}
-click-right = exec alacritty -e sudo pacman -Syu
+click-right = exec alacritty -e yay
 
 [module/spotify]
 type = custom/script

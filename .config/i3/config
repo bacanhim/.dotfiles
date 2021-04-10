@@ -206,7 +206,7 @@ for_window [class="^.*"] border pixel 1
 new_window 1pixel
 
 #Remove mouse acceleration
-exec xinput set-prop 11 301 -1
+exec xinput set-prop 11 299 -1
 
 #Window colors
 set $bgcolor    #bcecff
