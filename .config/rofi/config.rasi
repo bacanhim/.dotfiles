@@ -64,7 +64,7 @@ listview {
     spacing:      2px;
     fixed-height: 0;
     border:       1px dash 0px 0px;
-    lines:        5;
+    lines:        8;
 }
 
 element {
