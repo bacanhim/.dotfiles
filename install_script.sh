@@ -57,7 +57,7 @@ arch-chroot /mnt echo lynx >> /mnt/etc/hostname
 arch-chroot /mnt echo "127.0.0.1       localhost lynx" >> /mnt/etc/hosts
 arch-chroot /mnt echo "::1             localhost lynx " >> /mnt/etc/hosts
 arch-chroot /mnt reflector -c Portugal -a 6 --sort rate  --save /etc/pacman.d/mirrorlist
-arch-chroot /mnt pacman -S grub grub-btrfs efibootmgr networkmanager network-manager-applet wpa_supplicant dialog os-prober mtools dosfstools linux-headers git xdg-utils xdg-user-dirs --noconfirm
+arch-chroot /mnt pacman -S grub grub-btrfs zsh efibootmgr networkmanager network-manager-applet wpa_supplicant dialog os-prober mtools dosfstools linux-headers git xdg-utils xdg-user-dirs --noconfirm
 arch-chroot /mnt sed -i -e 's\GRUB_CMDLINE_LINUX=""\GRUB_CMDLINE_LINUX="cryptdevice=/dev/'"${Disk}"'2:lynx"\g' /etc/default/grub
 arch-chroot /mnt sed -i "s\MODULES=()\MODULES=(btrfs)\g" /etc/mkinitcpio.conf
 arch-chroot /mnt sed -i "s\HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)\HOOKS=(base udev autodetect modconf block encrypt filesystems keyboard fsck)\g" /etc/mkinitcpio.conf
@@ -71,16 +71,16 @@ arch-chroot /mnt systemctl enable snapper-timeline.timer
 arch-chroot /mnt systemctl enable snapper-cleanup.timer
 arch-chroot /mnt systemctl enable grub-btrfs.path
 echo "ROOT PASSWORD"
+arch-chroot /mnt chsh -s $(which zsh)
 arch-chroot /mnt passwd
-arch-chroot /mnt useradd -mG wheel bacanhim -s /usr/bin/zsh
+arch-chroot /mnt useradd -mG wheel bacanhim -s $(which zsh)
 echo "BACANHIM PASSWORD"
 arch-chroot /mnt passwd bacanhim
 arch-chroot /mnt pacman -Syu
 arch-chroot /mnt pacman -S xorg xorg-server lightdm lightdm-gtk-greeter openssh --noconfirm
 arch-chroot /mnt systemctl enable lightdm
 arch-chroot /mnt pacman -S nvidia nvidia-utils nvidia-settings --noconfirm
-arch-chroot /mnt pacman -S alacritty perl-json-xs perl-anyevent-i3 noto-fonts-emoji atom ranger pacman-contrib python-dbus dunst rofi i3-gaps neofetch stow playerctl capitaine-cursors ttf-font-awesome flameshot thunar feh zsh code firefox teamspeak3 materia-gtk-theme papirus-icon-theme --noconfirm
-arch-chroot /mnt chsh -s $(which zsh)
+arch-chroot /mnt pacman -S alacritty perl-json-xs perl-anyevent-i3 noto-fonts-emoji atom ranger pacman-contrib python-dbus dunst rofi i3-gaps neofetch stow playerctl capitaine-cursors ttf-font-awesome flameshot thunar feh code firefox teamspeak3 materia-gtk-theme papirus-icon-theme --noconfirm
 arch-chroot /mnt runuser -l bacanhim -c 'ssh-keygen -t ed25519 -C "Gitlab"'
 arch-chroot /mnt echo "bacanhim ALL=(ALL) NOPASSWD:ALL" >> /mnt/etc/sudoers
 arch-chroot /mnt runuser -l bacanhim -c "cd /tmp && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm"
