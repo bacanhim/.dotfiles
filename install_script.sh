@@ -80,7 +80,7 @@ arch-chroot /mnt pacman -Syu
 arch-chroot /mnt pacman -S xorg xorg-server lightdm lightdm-gtk-greeter openssh --noconfirm
 arch-chroot /mnt systemctl enable lightdm
 arch-chroot /mnt pacman -S nvidia nvidia-utils nvidia-settings --noconfirm
-arch-chroot /mnt pacman -S alacritty perl-json-xs perl-anyevent-i3 noto-fonts-emoji atom ranger pacman-contrib python-dbus dunst rofi i3-gaps neofetch stow playerctl capitaine-cursors ttf-font-awesome flameshot thunar feh code firefox teamspeak3 materia-gtk-theme papirus-icon-theme --noconfirm
+arch-chroot /mnt pacman -S alacritty perl-json-xs perl-anyevent-i3 noto-fonts-emoji ranger pacman-contrib python-dbus dunst rofi i3-gaps neofetch stow playerctl capitaine-cursors ttf-font-awesome flameshot thunar feh code firefox teamspeak3 materia-gtk-theme papirus-icon-theme --noconfirm
 arch-chroot /mnt runuser -l bacanhim -c 'ssh-keygen -t ed25519 -C "Gitlab"'
 arch-chroot /mnt echo "bacanhim ALL=(ALL) NOPASSWD:ALL" >> /mnt/etc/sudoers
 arch-chroot /mnt runuser -l bacanhim -c "cd /tmp && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm"
