@@ -63,7 +63,6 @@ linux /vmlinuz-linux
 initrd /intel-ucode.img
 initrd /initramfs-linux.img
 options cryptdevice=/dev/'"${Disk}"'2:lynx root=/dev/mapper/lynx rootflags=subvol=@ rw intel_pstate=no_hwp' >> /mnt/boot/loader/entries/arch.conf
-arch-chroot /mnt systemctl enable NetworkManager
 arch-chroot /mnt sed -i "s\# %wheel ALL=(ALL) ALL\%wheel ALL=(ALL) ALL\g" /etc/sudoers
 arch-chroot /mnt chsh -s $(which zsh)
 arch-chroot /mnt useradd -mG wheel bacanhim -s $(which zsh)
