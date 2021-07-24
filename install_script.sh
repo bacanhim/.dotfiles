@@ -72,7 +72,7 @@ arch-chroot /mnt pacman -S ntfs-3g avahi gvfs nfs-utils inetutils dnsutils htop 
 arch-chroot /mnt runuser -l bacanhim -c 'ssh-keygen -t ed25519 -C "Gitlab"'
 arch-chroot /mnt echo "bacanhim ALL=(ALL) NOPASSWD:ALL" >> /mnt/etc/sudoers
 arch-chroot /mnt runuser -l bacanhim -c "cd /tmp && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm"
-arch-chroot /mnt runuser -l bacanhim -c 'yay -S polybar ly-git ttf-unifont consolas-font zathura-git noto-fonts-main betterlockscreen-git auto-cpufreq-git spotify oh-my-zsh-git zsh-theme-powerlevel10k-git zsh-syntax-highlighting-git zsh-autosuggestions-git --noconfirm'
+arch-chroot /mnt runuser -l bacanhim -c 'yay -S polybar ly-git ttf-unifont consolas-font zathura-git noto-fonts-main betterlockscreen-git timeshift timeshift-autosnap auto-cpufreq-git spotify oh-my-zsh-git zsh-theme-powerlevel10k-git zsh-syntax-highlighting-git zsh-autosuggestions-git --noconfirm'
 echo "DOWNLOADING AND APPLYING DOTFILES"
 arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/ && git clone https://gitlab.com/bacanhim/.dotfiles.git"
 arch-chroot /mnt runuser -l bacanhim -c 'cd /home/bacanhim/.dotfiles && stow --target="$HOME" --no-folding .'
