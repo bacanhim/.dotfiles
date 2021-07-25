@@ -68,7 +68,8 @@ arch-chroot /mnt chsh -s $(which zsh)
 arch-chroot /mnt useradd -mG wheel bacanhim -s $(which zsh)
 echo "BACANHIM PASSWORD"
 arch-chroot /mnt passwd bacanhim
-arch-chroot /mnt pacman -S ntfs-3g avahi gvfs nfs-utils inetutils unzip tar zip unoconv clamav clamtk dnsutils htop bluez bluez-utils cups cockpit packagekit alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack rsync reflector acpi acpi_call tlp virt-manager qemu qemu-arch-extra edk2-ovmf bridge-utils dnsmasq vde2 openbsd-netcat iptables-nft ipset firewalld ebtables flatpak nss-mdns acpid nfs-utils xorg xorg-server openssh nvidia nvidia-utils nvidia-settings alacritty perl-json-xs perl-anyevent-i3 noto-fonts-emoji ranger pacman-contrib python-dbus dunst rofi i3-gaps neofetch stow playerctl capitaine-cursors ttf-font-awesome flameshot thunar feh code firefox teamspeak3 materia-gtk-theme papirus-icon-theme
+arch-chroot /mnt pacman -R iptables
+arch-chroot /mnt pacman -S ntfs-3g avahi gvfs nfs-utils inetutils unzip tar zip unoconv dnsutils htop bluez bluez-utils cups cockpit packagekit alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack rsync reflector acpi acpi_call tlp virt-manager qemu qemu-arch-extra edk2-ovmf bridge-utils dnsmasq vde2 openbsd-netcat iptables-nft ipset firewalld ebtables flatpak nss-mdns acpid nfs-utils xorg xorg-server openssh nvidia nvidia-utils nvidia-settings alacritty perl-json-xs perl-anyevent-i3 noto-fonts-emoji ranger pacman-contrib python-dbus dunst rofi i3-gaps neofetch stow playerctl capitaine-cursors ttf-font-awesome flameshot thunar feh code firefox teamspeak3 materia-gtk-theme papirus-icon-theme
 arch-chroot /mnt runuser -l bacanhim -c 'ssh-keygen -t ed25519 -C "Gitlab"'
 arch-chroot /mnt echo "bacanhim ALL=(ALL) NOPASSWD:ALL" >> /mnt/etc/sudoers
 arch-chroot /mnt runuser -l bacanhim -c "cd /tmp && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm"
@@ -83,8 +84,6 @@ arch-chroot /mnt systemctl enable NetworkManager
 arch-chroot /mnt systemctl enable bluetooth
 arch-chroot /mnt systemctl enable cups.service
 arch-chroot /mnt systemctl enable sshd
-arch-chroot /mnt systemctl enable clamav-freshclam.service
-arch-chroot /mnt systemctl enable clamav-daemon.service
 arch-chroot /mnt systemctl enable avahi-daemon
 arch-chroot /mnt systemctl enable tlp
 arch-chroot /mnt systemctl enable reflector.timer
