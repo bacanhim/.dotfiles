@@ -217,7 +217,7 @@ client.urgent           $ubgcolor       $ubgcolor               $textcolor      
 exec --no-startup-id dunst
 
 # Polkit Gnome Startup
-exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Gaps
 gaps inner 3
