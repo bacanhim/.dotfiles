@@ -198,8 +198,11 @@ bindsym Print exec /usr/bin/flameshot gui
 for_window [class="^.*"] border pixel 1
 new_window 1pixel
 
+#Set keyboardmap to US-INTl
+exec_always setxkbmap -layout us -variant intl
+
 #Remove mouse acceleration
-exec xinput set-prop 11 299 -1
+exec_always xinput set-prop 11 298 -1
 
 #Window colors
 set $bgcolor    #bcecff
