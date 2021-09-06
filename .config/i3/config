@@ -182,11 +182,12 @@ bindsym $mod+Shift+x exec betterlockscreen -l dim
 
 #Move windows to workspaces
 #find class name xprop -> click wanted window and find for wm_class(string) always the second name
-assign [class="firefox"] $ws1
+assign [class="firefox"] $ws3
 assign [class="code"] $ws2
-assign [class="thunar"] $ws3
+assign [class="thunar"] $ws4
 for_window [class="Spotify"] move to workspace $ws9
 assign [class="TeamSpeak 3"] $ws10
+assign [class="Alacritty"] $ws1
 
 #Polybar Startup
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
