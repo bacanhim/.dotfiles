@@ -69,7 +69,7 @@ arch-chroot /mnt useradd -mG wheel bacanhim -s $(which zsh)
 echo "BACANHIM PASSWORD"
 arch-chroot /mnt passwd bacanhim
 arch-chroot /mnt pacman -R iptables
-arch-chroot /mnt pacman -S ntfs-3g polkit-gnome avahi gvfs nfs-utils inetutils unzip tar zip unoconv dnsutils htop bluez bluez-utils cups cockpit packagekit alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack rsync reflector acpi acpi_call tlp virt-manager qemu qemu-arch-extra edk2-ovmf bridge-utils dnsmasq vde2 openbsd-netcat iptables-nft ipset firewalld ebtables flatpak nss-mdns acpid nfs-utils xorg xorg-server openssh nvidia nvidia-utils nvidia-settings alacritty perl-json-xs perl-anyevent-i3 noto-fonts-emoji ranger pacman-contrib python-dbus dunst rofi i3-gaps neofetch stow playerctl capitaine-cursors ttf-font-awesome flameshot thunar feh code firefox teamspeak3 materia-gtk-theme papirus-icon-theme
+arch-chroot /mnt pacman -S ntfs-3g polkit-gnome avahi gvfs nfs-utils inetutils ntp unzip tar zip unoconv dnsutils htop bluez bluez-utils cups cockpit packagekit alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack rsync reflector acpi acpi_call tlp virt-manager qemu qemu-arch-extra edk2-ovmf bridge-utils dnsmasq vde2 openbsd-netcat iptables-nft ipset firewalld ebtables flatpak nss-mdns acpid nfs-utils xorg xorg-server openssh nvidia nvidia-utils nvidia-settings alacritty perl-json-xs perl-anyevent-i3 noto-fonts-emoji ranger pacman-contrib python-dbus dunst rofi i3-gaps neofetch stow playerctl capitaine-cursors ttf-font-awesome flameshot thunar feh code firefox teamspeak3 ttf-fira-code materia-gtk-theme papirus-icon-theme
 arch-chroot /mnt runuser -l bacanhim -c 'ssh-keygen -t ed25519 -C "Gitlab"'
 arch-chroot /mnt echo "bacanhim ALL=(ALL) NOPASSWD:ALL" >> /mnt/etc/sudoers
 arch-chroot /mnt runuser -l bacanhim -c "cd /tmp && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm"
@@ -81,18 +81,19 @@ arch-chroot /mnt sed -i "s\bacanhim ALL=(ALL) NOPASSWD:ALL\ \g" /etc/sudoers
 arch-chroot /mnt usermod -aG libvirt bacanhim
 arch-chroot /mnt systemctl enable ly.service
 arch-chroot /mnt systemctl enable NetworkManager
-arch-chroot /mnt systemctl enable bluetooth
-arch-chroot /mnt systemctl enable cups.service
+#arch-chroot /mnt systemctl enable bluetooth
+#arch-chroot /mnt systemctl enable cups.service
 arch-chroot /mnt systemctl enable sshd
 arch-chroot /mnt systemctl enable avahi-daemon
-arch-chroot /mnt systemctl enable tlp
+#arch-chroot /mnt systemctl enable tlp
 arch-chroot /mnt systemctl enable reflector.timer
 arch-chroot /mnt systemctl enable fstrim.timer
 arch-chroot /mnt systemctl enable libvirtd
 arch-chroot /mnt systemctl enable firewalld
 arch-chroot /mnt systemctl enable acpid
 arch-chroot /mnt systemctl enable auto-cpufreq
-arch-chroot /mnt systemctl enable cockpit.socket
+#arch-chroot /mnt systemctl enable cockpit.socket
+arch-chroot /mnt systemctl enable ntpd.service
 arch-chroot /mnt firewall-cmd --add-service libvirt --zone=libvirt --permanent
 
 echo "ALL DONE REBOOTING"

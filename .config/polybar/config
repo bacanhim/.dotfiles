@@ -23,7 +23,7 @@ height = 29
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -48,7 +48,7 @@ font-4 = unifont:fontformat=truetype:size=8:antialias=false;0
 
 modules-left = i3
 modules-center = date
-modules-right = spotify pulseaudio pacman-updates cpu memory battery
+modules-right = spotify pulseaudio cpu memory battery pacman-updates 
 
 tray-position = right
 tray-padding = 10
@@ -66,7 +66,7 @@ interval = 600
 label = "  %output%"
 format-prefix = 
 format-prefix-foreground = ${colors.icons-red}
-click-right = exec alacritty -e upgrade
+click-right = exec alacritty -e yay
 
 [module/spotify]
 type = custom/script
