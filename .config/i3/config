@@ -174,11 +174,15 @@ bindsym $mod+r mode "resize"
 #}
 
 # Wallpaper
-exec_always feh --bg-fill $HOME/.config/i3/wall.jpg
+exec_always feh --bg-fill $HOME/.config/i3/wall.png
 
 #betterlockscreen
-#how to set a lockscreen wallpaper -> betterlockscreen -u $HOME/.config/i3/wall.jpg
+#how to set a lockscreen wallpaper ->
+exec_always betterlockscreen -u $HOME/.config/i3/wall.png
 bindsym $mod+Shift+x exec betterlockscreen -l dim
+
+#Star windows compositor
+exec_always picom
 
 #Move windows to workspaces
 #find class name xprop -> click wanted window and find for wm_class(string) always the second name
@@ -203,7 +207,7 @@ new_window 1pixel
 exec_always setxkbmap -layout us -variant intl
 
 #Remove mouse acceleration
-exec_always xinput set-prop 11 298 -1
+exec_always xinput set-prop 16 298 -1
 
 #Window colors
 set $bgcolor    #bcecff
