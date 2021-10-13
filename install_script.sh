@@ -68,12 +68,11 @@ arch-chroot /mnt chsh -s $(which zsh)
 arch-chroot /mnt useradd -mG wheel bacanhim -s $(which zsh)
 echo "BACANHIM PASSWORD"
 arch-chroot /mnt passwd bacanhim
-arch-chroot /mnt pacman -R iptables
-arch-chroot /mnt pacman -S ntfs-3g polkit-gnome avahi gvfs nfs-utils inetutils ntp unzip tar zip unoconv dnsutils htop bluez bluez-utils cups cockpit packagekit alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack rsync reflector acpi acpi_call tlp virt-manager qemu qemu-arch-extra edk2-ovmf bridge-utils dnsmasq vde2 openbsd-netcat iptables-nft ipset firewalld ebtables flatpak nss-mdns acpid nfs-utils xorg xorg-server openssh nvidia nvidia-utils nvidia-settings alacritty perl-json-xs perl-anyevent-i3 ranger pacman-contrib python-dbus dunst rofi i3-gaps neofetch stow playerctl capitaine-cursors ttf-font-awesome flameshot thunar feh code firefox teamspeak3 ttf-fira-code materia-gtk-theme papirus-icon-theme
-arch-chroot /mnt runuser -l bacanhim -c 'ssh-keygen -t ed25519 -C "Gitlab"'
 arch-chroot /mnt echo "bacanhim ALL=(ALL) NOPASSWD:ALL" >> /mnt/etc/sudoers
+arch-chroot /mnt runuser -l bacanhim -c 'ssh-keygen -t ed25519 -C "Gitlab"'
+arch-chroot /mnt pacman -S bitwarden discord picom noto-fonts ntfs-3g polkit-gnome avahi gvfs nfs-utils inetutils ntp unzip tar zip unoconv dnsutils htop bluez bluez-utils cups cockpit packagekit alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack rsync reflector acpi acpi_call tlp virt-manager qemu qemu-arch-extra edk2-ovmf bridge-utils dnsmasq vde2 openbsd-netcat iptables-nft ipset firewalld ebtables flatpak nss-mdns acpid nfs-utils xorg xorg-server openssh nvidia nvidia-utils nvidia-settings alacritty perl-json-xs perl-anyevent-i3 ranger pacman-contrib python-dbus dunst rofi i3-gaps neofetch stow playerctl capitaine-cursors ttf-font-awesome flameshot thunar feh code firefox teamspeak3 ttf-fira-code materia-gtk-theme papirus-icon-theme
 arch-chroot /mnt runuser -l bacanhim -c "cd /tmp && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm"
-arch-chroot /mnt runuser -l bacanhim -c 'yay -S polybar noto-color-emoji-fontconfig ly-git ttf-unifont consolas-font zathura-git noto-fonts-main betterlockscreen-git timeshift timeshift-autosnap auto-cpufreq-git spotify oh-my-zsh-git zsh-theme-powerlevel10k-git zsh-syntax-highlighting-git zsh-autosuggestions-git --noconfirm'
+arch-chroot /mnt runuser -l bacanhim -c 'yay -S polybar noto-color-emoji-fontconfig ly-git ttf-unifont consolas-font zathura-git betterlockscreen-git timeshift timeshift-autosnap auto-cpufreq-git spotify oh-my-zsh-git zsh-theme-powerlevel10k-git zsh-syntax-highlighting-git zsh-autosuggestions-git --noconfirm'
 echo "DOWNLOADING AND APPLYING DOTFILES"
 arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/ && git clone https://gitlab.com/bacanhim/.dotfiles.git"
 arch-chroot /mnt runuser -l bacanhim -c 'cd /home/bacanhim/.dotfiles && stow --target="$HOME" --no-folding .'
@@ -89,7 +88,7 @@ arch-chroot /mnt systemctl enable avahi-daemon
 arch-chroot /mnt systemctl enable reflector.timer
 arch-chroot /mnt systemctl enable fstrim.timer
 arch-chroot /mnt systemctl enable libvirtd
-arch-chroot /mnt systemctl enable firewalld
+arch-chroot /mnt systemctl enable --now firewalld
 arch-chroot /mnt systemctl enable acpid
 arch-chroot /mnt systemctl enable auto-cpufreq
 #arch-chroot /mnt systemctl enable cockpit.socket
