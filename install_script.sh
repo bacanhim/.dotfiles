@@ -55,14 +55,14 @@ arch-chroot /mnt echo "::1             localhost lynx " >> /mnt/etc/hosts
 arch-chroot /mnt pacman -S zsh openssh efibootmgr networkmanager network-manager-applet wpa_supplicant dialog os-prober mtools dosfstools vim git xdg-utils xdg-user-dirs --noconfirm
 arch-chroot /mnt sed -i "s\MODULES=()\MODULES=(btrfs)\g" /etc/mkinitcpio.conf
 arch-chroot /mnt sed -i "s\BINARIES=()\BINARIES=(/usr/bin/btrfs)\g" /etc/mkinitcpio.conf
-arch-chroot /mnt sed -i "s\HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)\HOOKS=(base udev autodetect keyboard keymap modconf block encrypt filesystems fsck)\g" /etc/mkinitcpio.conf
+arch-chroot /mnt sed -i "s\HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)\HOOKS=(base udev plymouth autodetect keyboard keymap modconf block plymouth-encrypt filesystems fsck)\g" /etc/mkinitcpio.conf
 arch-chroot /mnt mkinitcpio -p linux
 arch-chroot /mnt bootctl --path=/boot install
 arch-chroot /mnt echo 'title Arch Linux
 linux /vmlinuz-linux
 initrd /intel-ucode.img
 initrd /initramfs-linux.img
-options cryptdevice=/dev/'"${Disk}"'2:lynx root=/dev/mapper/lynx rootflags=subvol=@ rw intel_pstate=no_hwp' >> /mnt/boot/loader/entries/arch.conf
+options cryptdevice=/dev/'"${Disk}"'2:lynx root=/dev/mapper/lynx rootflags=subvol=@ rw intel_pstate=no_hwp quiet splash' >> /mnt/boot/loader/entries/arch.conf
 arch-chroot /mnt sed -i "s\# %wheel ALL=(ALL) ALL\%wheel ALL=(ALL) ALL\g" /etc/sudoers
 arch-chroot /mnt chsh -s $(which zsh)
 arch-chroot /mnt useradd -mG wheel bacanhim -s $(which zsh)
@@ -72,10 +72,11 @@ arch-chroot /mnt echo "bacanhim ALL=(ALL) NOPASSWD:ALL" >> /mnt/etc/sudoers
 arch-chroot /mnt runuser -l bacanhim -c 'ssh-keygen -t ed25519 -C "Gitlab"'
 arch-chroot /mnt pacman -S bitwarden discord picom noto-fonts ntfs-3g polkit-gnome avahi gvfs nfs-utils inetutils ntp unzip tar zip unoconv dnsutils htop bluez bluez-utils cups cockpit packagekit alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack rsync reflector acpi acpi_call tlp virt-manager qemu qemu-arch-extra edk2-ovmf bridge-utils dnsmasq vde2 openbsd-netcat iptables-nft ipset firewalld ebtables flatpak nss-mdns acpid nfs-utils xorg xorg-server nvidia nvidia-utils nvidia-settings alacritty perl-json-xs perl-anyevent-i3 ranger pacman-contrib python-dbus dunst rofi i3-gaps neofetch stow playerctl capitaine-cursors ttf-font-awesome flameshot thunar feh code firefox teamspeak3 ttf-fira-code materia-gtk-theme papirus-icon-theme
 arch-chroot /mnt runuser -l bacanhim -c "cd /tmp && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm"
-arch-chroot /mnt runuser -l bacanhim -c 'yay -S polybar noto-color-emoji-fontconfig ly-git ttf-unifont consolas-font zathura-git betterlockscreen-git timeshift timeshift-autosnap auto-cpufreq-git spotify oh-my-zsh-git zsh-theme-powerlevel10k-git zsh-syntax-highlighting-git zsh-autosuggestions-git --noconfirm'
+arch-chroot /mnt runuser -l bacanhim -c 'yay -S polybar plymouth plymouth-theme-arch-charge noto-color-emoji-fontconfig ly-git ttf-unifont consolas-font zathura-git betterlockscreen-git timeshift timeshift-autosnap auto-cpufreq-git spotify oh-my-zsh-git zsh-theme-powerlevel10k-git zsh-syntax-highlighting-git zsh-autosuggestions-git --noconfirm'
 echo "DOWNLOADING AND APPLYING DOTFILES"
 arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/ && git clone https://gitlab.com/bacanhim/.dotfiles.git"
 arch-chroot /mnt runuser -l bacanhim -c 'cd /home/bacanhim/.dotfiles && stow --target="$HOME" --no-folding .'
+arch-chroot /mnt runuser -l bacanhim -c 'sudo plymouth-set-default-theme -R arch-charge'
 arch-chroot /mnt sed -i "s\bacanhim ALL=(ALL) NOPASSWD:ALL\ \g" /etc/sudoers
 arch-chroot /mnt usermod -aG libvirt bacanhim
 arch-chroot /mnt systemctl enable ly.service
