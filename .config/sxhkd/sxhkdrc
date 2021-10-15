@@ -55,7 +55,7 @@ super + g
 #
 
 # set the window state
-super + {shift + space}
+super + {shift + spacebar}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 #
@@ -143,3 +143,6 @@ super + w
 
 super + n
   thunar
+
+super + F1
+  alacritty -e vim -R ~/.config/sxhkd/sxhkdrc

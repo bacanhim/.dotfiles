@@ -1,15 +1,10 @@
 [colors]
-;background = ${xrdb:color0:#222}
 background = #222
 background-alt = #444
-;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
 icons-red = #f00
-icons-green = #8ab251
 green-spotify = #1DB954
-icons-reboot = #009900
-icons-poweroff = #cb0000
 icons-grey = #c6c6c6
 
 primary = #bcecff
@@ -17,11 +12,8 @@ secondary = #bcecff
 alert = #bd2c40
 
 [bar/top]
-;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 29
-;offset-x = 1%
-;offset-y = 1%
 radius = 0.0
 fixed-center = true
 
@@ -46,12 +38,12 @@ font-2 = Font Awesome 5 Free Solid:pixelsize=12;2
 font-3 = Font Awesome 5 Brands:pixelsize=12;2
 font-4 = unifont:fontformat=truetype:size=8:antialias=false;0
 
-modules-left = i3
+modules-left = bspwm xwindow
 modules-center = date
-modules-right = spotify pulseaudio cpu memory battery pacman-updates
+modules-right = spotify pulseaudio cpu memory pacman-updates
 
 tray-position = right
-tray-padding = 10
+tray-padding = 9
 
 separator = " "
 separator-padding = 1
@@ -80,91 +72,35 @@ exec = python $HOME/.config/polybar/scripts/spotify.py -f '{artist}: {song}'
 type = internal/xwindow
 label = %title:0:30:...%
 
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground =
-
-label-layout = %layout%
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-foreground = #000
-label-indicator-underline = ${colors.secondary}
-
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-
-label-mounted =  %free%
-label-mounted-foreground = ${colors.icons-grey}
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
-
 [module/bspwm]
 type = internal/bspwm
-format = <label-state> <label-mode>
-index-sort = true
-wrapping-scroll = false
-
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
-ws-icon-7 = 8;
-ws-icon-8 = 9;
-ws-icon-9 = 10;
-
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
 
 label-focused = %icon%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
-label-unfocused = %icon%
-label-unfocused-padding = 2
+label-occupied = %icon%
+label-occupied-padding = 2
 
-label-visible = %icon%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
-
-label-urgent = %icon%
+label-urgent = %icon%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-[module/xbacklight]
-type = internal/xbacklight
+label-empty = %icon%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
 
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
 
 [module/cpu]
 type = internal/cpu
@@ -201,21 +137,6 @@ ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
-
-[module/eth]
-type = internal/network
-interface = enp5s0
-interval = 3.0
-
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.icons-grey}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
@@ -291,50 +212,6 @@ animation-discharging-1 = 
 animation-discharging-2 = 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
-
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
-
-format = <ramp> <label>
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${colors.icons-red}
-
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.icons-red}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.icons-grey}
-ramp-1-foreground = ${colors.icons-green}
-ramp-2-foreground = ${colors.icons-red}
-
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
-label-open = 
-label-open-foreground = ${colors.icons-poweroff}
-label-close =  CANCEL
-label-close-foreground = ${colors.icons-grey}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 =  LOGOUT
-menu-0-0-exec = i3-msg exit
-menu-0-0-foreground = ${colors.icons-grey}
-menu-0-1 =  REBOOT
-menu-0-1-foreground = ${colors.icons-reboot}
-menu-0-1-exec = systemctl reboot
-menu-0-2 =  POWER OFF
-menu-0-2-foreground = ${colors.icons-poweroff}
-menu-0-2-exec = systemctl poweroff
 
 [settings]
 screenchange-reload = true
