@@ -48,7 +48,7 @@ font-4 = unifont:fontformat=truetype:size=8:antialias=false;0
 
 modules-left = i3
 modules-center = date
-modules-right = spotify pulseaudio cpu memory battery pacman-updates 
+modules-right = spotify pulseaudio cpu memory battery pacman-updates
 
 tray-position = right
 tray-padding = 10
@@ -106,8 +106,8 @@ label-mounted-foreground = ${colors.icons-grey}
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
-[module/i3]
-type = internal/i3
+[module/bspwm]
+type = internal/bspwm
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
@@ -237,9 +237,9 @@ click-right = pavucontrol
 label-muted =  MUTED
 label-muted-foreground = #666
 
-ramp-volume-0 =  
-ramp-volume-1 =  
-ramp-volume-2 =  
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
