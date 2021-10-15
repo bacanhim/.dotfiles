@@ -56,6 +56,6 @@ betterlockscreen -u $HOME/.config/wallpaper.png
 # Polkit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 # Spotify
-#spotify &
+spotify &
 # Teamspeak
-#teamspeak3 &
+teamspeak3 &
