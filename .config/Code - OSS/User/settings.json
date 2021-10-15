@@ -1,3 +1,82 @@
 {
+    "editor.suggestSelection": "first",
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "files.trimTrailingWhitespace": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorCustomizations": {
+        "activityBarBadge.background": "#00BCD4",
+        "activityBar.activeBorder": "#00BCD4",
+        "list.activeSelectionForeground": "#00BCD4",
+        "list.inactiveSelectionForeground": "#00BCD4",
+        "list.highlightForeground": "#00BCD4",
+        "scrollbarSlider.activeBackground": "#00BCD450",
+        "editorSuggestWidget.highlightForeground": "#00BCD4",
+        "textLink.foreground": "#00BCD4",
+        "progressBar.background": "#00BCD4",
+        "pickerGroup.foreground": "#00BCD4",
+        "tab.activeBorder": "#00BCD4",
+        "notificationLink.foreground": "#00BCD4",
+        "editorWidget.resizeBorder": "#00BCD4",
+        "editorWidget.border": "#00BCD4",
+        "settings.modifiedItemIndicator": "#00BCD4",
+        "settings.headerForeground": "#00BCD4",
+        "panelTitle.activeBorder": "#00BCD4",
+        "breadcrumb.activeSelectionForeground": "#00BCD4",
+        "menu.selectionForeground": "#00BCD4",
+        "menubar.selectionForeground": "#00BCD4",
+        "editor.findMatchBorder": "#00BCD4",
+        "selection.background": "#00BCD440",
+        "statusBarItem.remoteBackground": "#00BCD4"
+    },
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.fontSize": 15,
+    "breadcrumbs.enabled": true,
+    "files.autoSave": "afterDelay",
+    "git.confirmSync": false,
+    "git.ignoreMissingGitWarning": true,
+    "editor.fontFamily": "'Fira Code' , 'monospace', monospace",
+    "editor.lineHeight": 30,
+    "editor.fontLigatures": true,
+    "editor.minimap.enabled": true,
+    "window.menuBarVisibility": "default",
+    "editor.linkedEditing": true,
     "sync.gist": "f98c70976dbc30b78b88273cce9387fc",
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "cSpell.language": "en,pt,en-US,pt-PT,en-GB",
+    "[vue]": {
+        "editor.defaultFormatter": "octref.vetur"
+    },
+    "cSpell.enableFiletypes": [
+        "vue"
+    ],
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.colorTheme": "Community Material Theme Darker High Contrast",
+
+    "[php]": {
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+    },
+    "liveServer.settings.donotVerifyTags": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "explorer.confirmDelete": false,
+    "git.autofetch": true,
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "sshfs.configs": [
+        {
+            "name": "alphaq",
+            "host": "192.168.1.2",
+            "username": "sysadmin",
+            "root": "/home/sysadmin/docker",
+            "privateKeyPath": "/home/bacanhim/.ssh/id_rsa"
+        }
+    ]
 }

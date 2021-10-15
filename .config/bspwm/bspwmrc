@@ -21,7 +21,7 @@ bspc config pointer_action2        resize_corner
 bspc config focus_follows_pointer  true
 
 # Desktop settings
-bspc config window_gap 16
+bspc config window_gap 12
 
 # Node settings
 bspc config border_width 1
@@ -29,16 +29,19 @@ bspc config border_width 1
 # Rules
 bspc rule -a flameshot border=off
 bspc rule -a firefox desktop='^3' follow=on
-bspc rule -a code desktop='^2' follow=on
-bspc rule -a thunar desktop='^4' follow=on
-bspc rule -a Spotify desktop='^9'
-bspc rule -a ts3client_linux_amd64 desktop='^10' state=floating
+bspc rule -a "code-oss" desktop='^2' follow=on
+bspc rule -a Thunar desktop='^4' follow=on
+bspc rule -a "Spotify" desktop='^9'
+bspc rule -a "TeamSpeak 3" desktop='^10' state=floating
+bspc rule -a discord desktop='^10' state=floating
 bspc rule -a Alacritty desktop='^1' follow=on
-bspc rule -a virt-manager desktop='^5' follow=on
-# Set wallpapper
-feh --bg-fill $HOME/.config/wallpapper.png
+bspc rule -a Virt-manager desktop='^5' follow=on
 
 # Autostart
+# Set Workspace 8 all starting windows floating
+sh ~/.config/bspwm/workspacerc &
+# Network applet
+nm-applet &
 # Remove mouse acceleration
 xinput set-prop 16 298 -1 &
 # Set keyboard layout
@@ -47,9 +50,12 @@ setxkbmap -layout us -variant intl &
 sh ~/.screenlayout/monitor.sh &
 # Launch polybar
 ~/.config/polybar/launch.sh &
+# Set wallpapper
+feh --bg-fill $HOME/.config/wallpaper.png
+betterlockscreen -u $HOME/.config/wallpaper.png
 # Polkit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 # Spotify
-spotify &
+#spotify &
 # Teamspeak
-teamspeak3 &
+#teamspeak3 &
