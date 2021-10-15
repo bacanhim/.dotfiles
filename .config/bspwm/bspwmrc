@@ -55,7 +55,5 @@ feh --bg-fill $HOME/.config/wallpaper.png
 betterlockscreen -u $HOME/.config/wallpaper.png
 # Polkit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-# Spotify
-spotify &
 # Teamspeak
 teamspeak3 &
