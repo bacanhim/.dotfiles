@@ -21,7 +21,7 @@ bspc config pointer_action2        resize_corner
 bspc config focus_follows_pointer  true
 
 # Desktop settings
-bspc config window_gap 12
+bspc config window_gap 16
 
 # Node settings
 bspc config border_width 1
@@ -55,5 +55,3 @@ feh --bg-fill $HOME/.config/wallpaper.png
 betterlockscreen -u $HOME/.config/wallpaper.png
 # Polkit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-# Teamspeak
-teamspeak3 &
