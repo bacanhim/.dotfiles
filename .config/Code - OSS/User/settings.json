@@ -1,3 +1,7 @@
 {
     "sync.gist": "f98c70976dbc30b78b88273cce9387fc",
+    "git.confirmSync": false,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "telemetry.telemetryLevel": "off",
+    "window.menuBarVisibility": "toggle",
 }
