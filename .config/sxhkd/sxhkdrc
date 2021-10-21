@@ -55,7 +55,7 @@ super + g
 #
 
 # set the window state
-super + {shift + spacebar}
+super + shift + s
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 #
