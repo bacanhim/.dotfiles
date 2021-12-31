@@ -55,7 +55,7 @@ arch-chroot /mnt echo "::1             localhost lynx " >> /mnt/etc/hosts
 arch-chroot /mnt pacman -S zsh openssh efibootmgr networkmanager network-manager-applet wpa_supplicant dialog os-prober mtools dosfstools vim git xdg-utils xdg-user-dirs --noconfirm
 arch-chroot /mnt sed -i "s\MODULES=()\MODULES=(btrfs)\g" /etc/mkinitcpio.conf
 arch-chroot /mnt sed -i "s\BINARIES=()\BINARIES=(/usr/bin/btrfs)\g" /etc/mkinitcpio.conf
-arch-chroot /mnt sed -i "s\HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)\HOOKS=(base udev plymouth autodetect keyboard keymap modconf block plymouth-encrypt filesystems fsck)\g" /etc/mkinitcpio.conf
+arch-chroot /mnt sed -i "s\HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)\HOOKS=(base udev autodetect keyboard keymap modconf block encrypt filesystems fsck)\g" /etc/mkinitcpio.conf
 arch-chroot /mnt mkinitcpio -p linux
 arch-chroot /mnt bootctl --path=/boot install
 arch-chroot /mnt echo 'title Arch Linux
@@ -70,16 +70,15 @@ echo "BACANHIM PASSWORD"
 arch-chroot /mnt passwd bacanhim
 arch-chroot /mnt echo "bacanhim ALL=(ALL) NOPASSWD:ALL" >> /mnt/etc/sudoers
 arch-chroot /mnt runuser -l bacanhim -c 'ssh-keygen -t ed25519 -C "Gitlab"'
-arch-chroot /mnt pacman -S bitwarden bspwm sxhkd discord mpv arandr picom noto-fonts ntfs-3g polkit-gnome avahi gvfs nfs-utils inetutils ntp unzip tar zip unoconv dnsutils htop bluez bluez-utils cups cockpit packagekit alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack rsync reflector acpi acpi_call tlp virt-manager qemu qemu-arch-extra edk2-ovmf bridge-utils dnsmasq vde2 openbsd-netcat iptables-nft ipset firewalld ebtables flatpak nss-mdns acpid nfs-utils xorg xorg-server nvidia nvidia-utils nvidia-settings alacritty ranger pacman-contrib python-dbus dunst rofi neofetch stow playerctl capitaine-cursors ttf-font-awesome flameshot thunar feh code firefox teamspeak3 ttf-fira-code materia-gtk-theme papirus-icon-theme
+arch-chroot /mnt pacman -S bitwarden gdm bspwm sxhkd discord mpv arandr noto-fonts ntfs-3g polkit-gnome avahi gvfs nfs-utils inetutils ntp unzip tar zip unoconv dnsutils htop bluez bluez-utils cups cockpit packagekit alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack rsync reflector acpi acpi_call tlp virt-manager qemu qemu-arch-extra edk2-ovmf bridge-utils dnsmasq vde2 openbsd-netcat iptables-nft ipset firewalld ebtables flatpak nss-mdns acpid nfs-utils xorg xorg-server nvidia nvidia-utils nvidia-settings alacritty ranger pacman-contrib python-dbus dunst rofi neofetch stow playerctl capitaine-cursors ttf-font-awesome flameshot thunar feh code firefox teamspeak3 ttf-fira-code materia-gtk-theme papirus-icon-theme
 arch-chroot /mnt runuser -l bacanhim -c "cd /tmp && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm"
-arch-chroot /mnt runuser -l bacanhim -c 'yay -S polybar plymouth plymouth-theme-arch-charge noto-color-emoji-fontconfig ly-git ttf-unifont consolas-font zathura-git betterlockscreen-git timeshift timeshift-autosnap auto-cpufreq-git spotify oh-my-zsh-git zsh-theme-powerlevel10k-git zsh-syntax-highlighting-git zsh-autosuggestions-git --noconfirm'
+arch-chroot /mnt runuser -l bacanhim -c 'yay -S polybar noto-color-emoji-fontconfig ttf-unifont consolas-font zathura-git betterlockscreen-git timeshift timeshift-autosnap auto-cpufreq-git spotify oh-my-zsh-git zsh-theme-powerlevel10k-git zsh-syntax-highlighting-git zsh-autosuggestions-git --noconfirm'
 echo "DOWNLOADING AND APPLYING DOTFILES"
 arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/ && git clone https://gitlab.com/bacanhim/.dotfiles.git"
 arch-chroot /mnt runuser -l bacanhim -c 'cd /home/bacanhim/.dotfiles && stow --target="$HOME" --no-folding .'
-arch-chroot /mnt runuser -l bacanhim -c 'sudo plymouth-set-default-theme -R arch-charge'
 arch-chroot /mnt sed -i "s\bacanhim ALL=(ALL) NOPASSWD:ALL\ \g" /etc/sudoers
 arch-chroot /mnt usermod -aG libvirt bacanhim
-arch-chroot /mnt systemctl enable ly.service
+arch-chroot /mnt systemctl enable gdm.service
 arch-chroot /mnt systemctl enable NetworkManager
 #arch-chroot /mnt systemctl enable bluetooth
 #arch-chroot /mnt systemctl enable cups.service
@@ -89,12 +88,13 @@ arch-chroot /mnt systemctl enable avahi-daemon
 arch-chroot /mnt systemctl enable reflector.timer
 arch-chroot /mnt systemctl enable fstrim.timer
 arch-chroot /mnt systemctl enable libvirtd
-arch-chroot /mnt systemctl enable --now firewalld
+arch-chroot /mnt systemctl enable firewalld
 arch-chroot /mnt systemctl enable acpid
 arch-chroot /mnt systemctl enable auto-cpufreq
 #arch-chroot /mnt systemctl enable cockpit.socket
 arch-chroot /mnt systemctl enable ntpd.service
-arch-chroot /mnt firewall-cmd --add-service libvirt --zone=libvirt --permanent
+# have to do it manualy
+#arch-chroot /mnt firewall-cmd --add-service libvirt --zone=libvirt --permanent
 
 echo "ALL DONE REBOOTING"
 sleep 2
