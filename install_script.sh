@@ -74,7 +74,7 @@ arch-chroot /mnt pacman -S bitwarden gdm bspwm sxhkd discord mpv arandr noto-fon
 arch-chroot /mnt runuser -l bacanhim -c "cd /tmp && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm"
 arch-chroot /mnt runuser -l bacanhim -c 'yay -S polybar noto-color-emoji-fontconfig ttf-unifont consolas-font zathura-git betterlockscreen-git timeshift timeshift-autosnap auto-cpufreq-git spotify oh-my-zsh-git zsh-theme-powerlevel10k-git zsh-syntax-highlighting-git zsh-autosuggestions-git --noconfirm'
 echo "DOWNLOADING AND APPLYING DOTFILES"
-arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/ && git clone https://gitlab.com/bacanhim/.dotfiles.git"
+arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/ && git clone https://github.com/bacanhim/.dotfiles.git"
 arch-chroot /mnt runuser -l bacanhim -c 'cd /home/bacanhim/.dotfiles && stow --target="$HOME" --no-folding .'
 arch-chroot /mnt sed -i "s\bacanhim ALL=(ALL) NOPASSWD:ALL\ \g" /etc/sudoers
 arch-chroot /mnt usermod -aG libvirt bacanhim
