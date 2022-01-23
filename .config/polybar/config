@@ -58,7 +58,7 @@ interval = 600
 label = "  %output%"
 format-prefix = 
 format-prefix-foreground = ${colors.icons-red}
-click-right = exec alacritty -e yay
+click-right = exec alacritty -e yay -Syu --noconfirm
 
 [module/spotify]
 type = custom/script
