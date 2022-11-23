@@ -67,7 +67,7 @@ arch-chroot /mnt runuser -l bacanhim -c 'paru -S visual-studio-code-bin chili-sd
 echo "DOWNLOADING AND APPLYING DOTFILES"
 arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/ && git clone https://github.com/bacanhim/.dotfiles.git"
 arch-chroot /mnt runuser -l bacanhim -c 'cd /home/bacanhim/.dotfiles && stow --target="$HOME" --no-folding .'
-arch-chroot /mnt cp -R /usr/share/grub/themes/* /boot/grub/themes/
+arch-chroot /mnt cp -R /usr/share/grub/themes/* /boot/grub/themes/ #not working yet
 arch-chroot /mnt sed -i 's\#GRUB_THEME="/path/to/gfxtheme"\GRUB_THEME="/boot/grub/themes/Vimix/theme.txt"\g' /etc/default/grub
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 arch-chroot /mnt sed -i 's\Current=\Current=chili\g' /usr/lib/sddm/sddm.conf.d/default.conf
