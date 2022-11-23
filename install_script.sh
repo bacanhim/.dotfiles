@@ -7,7 +7,7 @@ read -p "Qual e o disco a usar?" Disk
 sed -i "s/#Color/Color/g" /etc/pacman.conf
 sed -i "s/#ParallelDownloads = 5/ParallelDownloads = 5/g" /etc/pacman.conf
 dd bs=512 if=/dev/zero of=/dev/"${Disk}" count=8192
-dd bs=512 if=/dev/zero of=/dev/"${Disk}" count=8192 seek=$((`blockdev --getsz /dev/"${Disk}"` - 8192))
+dd bs=512 if=/dev/zero of=/dev/"${Disk}" count=8192 seek=$(($(blockdev --getsz /dev/"${Disk}") - 8192))
 sgdisk --zap-all /dev/"${Disk}"
 sgdisk -og /dev/"${Disk}"
 sgdisk -n 0:0:+650MiB -t 0:ef00 -c 0:efi /dev/"${Disk}"
@@ -37,15 +37,15 @@ mount /dev/"${Disk}"\1 /mnt/boot/
 pacstrap /mnt base base-devel linux linux-firmware linux-headers git vim intel-ucode btrfs-progs reflector rsync --noconfirm
 arch-chroot /mnt sed -i "s/#Color/Color/g" /etc/pacman.conf
 arch-chroot /mnt sed -i "s/#ParallelDownloads = 5/ParallelDownloads = 5/g" /etc/pacman.conf
-genfstab -U /mnt >> /mnt/etc/fstab
+genfstab -U /mnt >>/mnt/etc/fstab
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Lisbon /etc/localtime
 arch-chroot /mnt hwclock --systohc
 arch-chroot /mnt sed -i "s/#en_US.UTF-8/en_US.UTF-8/g" /etc/locale.gen
 arch-chroot /mnt locale-gen
-arch-chroot /mnt echo LANG=en_US.UTF-8 >> /mnt/etc/locale.conf
-arch-chroot /mnt echo lynx >> /mnt/etc/hostname
-arch-chroot /mnt echo "127.0.0.1       localhost lynx" >> /mnt/etc/hosts
-arch-chroot /mnt echo "::1             localhost lynx " >> /mnt/etc/hosts
+arch-chroot /mnt echo LANG=en_US.UTF-8 >>/mnt/etc/locale.conf
+arch-chroot /mnt echo lynx >>/mnt/etc/hostname
+arch-chroot /mnt echo "127.0.0.1       localhost lynx" >>/mnt/etc/hosts
+arch-chroot /mnt echo "::1             localhost lynx " >>/mnt/etc/hosts
 arch-chroot /mnt pacman -S zsh openssh grub grub-btrfs efibootmgr networkmanager network-manager-applet wpa_supplicant dialog os-prober mtools dosfstools xdg-utils xdg-user-dirs --noconfirm
 arch-chroot /mnt sed -i "s\MODULES=()\MODULES=(btrfs)\g" /etc/mkinitcpio.conf
 arch-chroot /mnt sed -i "s\BINARIES=()\BINARIES=(/usr/bin/btrfs)\g" /etc/mkinitcpio.conf
@@ -59,7 +59,7 @@ arch-chroot /mnt chsh -s $(which zsh)
 arch-chroot /mnt useradd -mG wheel bacanhim -s $(which zsh)
 echo "BACANHIM PASSWORD"
 arch-chroot /mnt passwd bacanhim
-arch-chroot /mnt echo "bacanhim ALL=(ALL) NOPASSWD:ALL" >> /mnt/etc/sudoers
+arch-chroot /mnt echo "bacanhim ALL=(ALL) NOPASSWD:ALL" >>/mnt/etc/sudoers
 arch-chroot /mnt runuser -l bacanhim -c 'ssh-keygen -t ed25519 -C "Gitlab"'
 arch-chroot /mnt pacman -S mpv pacman-contrib polybar python-dbus arandr ntfs-3g gvfs nfs-utils ntp unzip tar duf zip htop packagekit acpi acpi_call tlp acpid sddm polkit-gnome xorg xorg-server nvidia nvidia-utils nvidia-settings alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack blueman playerctl flameshot bspwm sxhkd rofi alacritty ranger neofetch stow thunar feh firefox teamspeak3 discord capitaine-cursors ttf-cascadia-code ttf-fira-code noto-fonts materia-gtk-theme papirus-icon-theme --noconfirm
 arch-chroot /mnt runuser -l bacanhim -c "cd /tmp && git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si --noconfirm"
@@ -67,6 +67,9 @@ arch-chroot /mnt runuser -l bacanhim -c 'paru -S betterlockscreen-git timeshift 
 echo "DOWNLOADING AND APPLYING DOTFILES"
 arch-chroot /mnt runuser -l bacanhim -c "cd /home/bacanhim/ && git clone https://github.com/bacanhim/.dotfiles.git"
 arch-chroot /mnt runuser -l bacanhim -c 'cd /home/bacanhim/.dotfiles && stow --target="$HOME" --no-folding .'
+arch-chroot /mnt cp -R /usr/share/grub/themes/* /boot/grub/themes/
+arch-chroot /mnt echo 'GRUB_THEME="/boot/grub/themes/Vimix/theme.txt"' >>/etc/default/grub
+arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 arch-chroot /mnt sed -i "s\bacanhim ALL=(ALL) NOPASSWD:ALL\ \g" /etc/sudoers
 arch-chroot /mnt systemctl enable sddm.service
 arch-chroot /mnt systemctl enable NetworkManager
