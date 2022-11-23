@@ -1,3 +1,5 @@
-add notifications with xfc4-notifyd
+add notifications with xfce4-notifyd
 remove dunst
 add vscode bin
+add fontawesome
+fix grub and sddm theme
