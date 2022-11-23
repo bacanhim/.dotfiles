@@ -561,5 +561,5 @@ colors:
 
 font:
   normal:
-    family: consolas
-  size: 12
+    family: CascadiaCode
+  size: 11
