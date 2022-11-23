@@ -70,7 +70,7 @@ arch-chroot /mnt runuser -l bacanhim -c 'cd /home/bacanhim/.dotfiles && stow --t
 arch-chroot /mnt runuser -l root cp -R /usr/share/grub/themes/* /boot/grub/themes/
 arch-chroot /mnt sed -i 's\#GRUB_THEME="/path/to/gfxtheme"\GRUB_THEME="/boot/grub/themes/Vimix/theme.txt"\g' /etc/default/grub
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
-# arch-chroot /mnt sed -i 's\Current=\Current=chili\g' /etc/sddm.conf.d/kde_settings.conf
+arch-chroot /mnt sed -i 's\Current=\Current=chili\g' /usr/lib/sddm/sddm.conf.d/default.conf
 arch-chroot /mnt sed -i "s\bacanhim ALL=(ALL) NOPASSWD:ALL\ \g" /etc/sudoers
 arch-chroot /mnt systemctl enable sddm.service
 arch-chroot /mnt systemctl enable NetworkManager
