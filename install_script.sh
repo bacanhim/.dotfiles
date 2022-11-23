@@ -61,7 +61,7 @@ echo "BACANHIM PASSWORD"
 arch-chroot /mnt passwd bacanhim
 arch-chroot /mnt echo "bacanhim ALL=(ALL) NOPASSWD:ALL" >>/mnt/etc/sudoers
 arch-chroot /mnt runuser -l bacanhim -c 'ssh-keygen -t ed25519 -C "Gitlab"'
-arch-chroot /mnt pacman -S mpv pacman-contrib polybar python-dbus arandr ntfs-3g gvfs nfs-utils ntp unzip tar duf zip htop packagekit acpi acpi_call tlp acpid sddm polkit-gnome xorg xorg-server nvidia nvidia-utils nvidia-settings alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack blueman playerctl flameshot bspwm sxhkd rofi alacritty ranger neofetch stow thunar feh firefox teamspeak3 discord capitaine-cursors ttf-cascadia-code ttf-fira-code noto-fonts materia-gtk-theme papirus-icon-theme --noconfirm
+arch-chroot /mnt pacman -S mpv pacman-contrib polybar python-dbus arandr ntfs-3g gvfs nfs-utils ntp unzip tar duf zip htop packagekit acpi acpi_call tlp acpid sddm polkit-gnome xorg xorg-server nvidia nvidia-utils nvidia-settings alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack blueman playerctl flameshot bspwm sxhkd rofi alacritty ranger neofetch stow thunar feh firefox teamspeak3 discord capitaine-cursors ttf-cascadia-code ttf-fira-code noto-fonts materia-gtk-theme papirus-icon-theme grub-theme-vimix --noconfirm
 arch-chroot /mnt runuser -l bacanhim -c "cd /tmp && git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si --noconfirm"
 arch-chroot /mnt runuser -l bacanhim -c 'paru -S betterlockscreen-git timeshift timeshift-autosnap spotify-tui oh-my-zsh-git zsh-theme-powerlevel10k-git zsh-syntax-highlighting-git zsh-autosuggestions-git --noconfirm'
 echo "DOWNLOADING AND APPLYING DOTFILES"
