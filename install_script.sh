@@ -46,7 +46,7 @@ arch-chroot /mnt echo LANG=en_US.UTF-8 >> /mnt/etc/locale.conf
 arch-chroot /mnt echo lynx >> /mnt/etc/hostname
 arch-chroot /mnt echo "127.0.0.1       localhost lynx" >> /mnt/etc/hosts
 arch-chroot /mnt echo "::1             localhost lynx " >> /mnt/etc/hosts
-arch-chroot /mnt pacman -S zsh openssh grub efibootmgr networkmanager network-manager-applet wpa_supplicant dialog os-prober mtools dosfstools xdg-utils xdg-user-dirs --noconfirm
+arch-chroot /mnt pacman -S zsh openssh grub grub-btrfs efibootmgr networkmanager network-manager-applet wpa_supplicant dialog os-prober mtools dosfstools xdg-utils xdg-user-dirs --noconfirm
 arch-chroot /mnt sed -i "s\MODULES=()\MODULES=(btrfs)\g" /etc/mkinitcpio.conf
 arch-chroot /mnt sed -i "s\BINARIES=()\BINARIES=(/usr/bin/btrfs)\g" /etc/mkinitcpio.conf
 arch-chroot /mnt sed -i "s\HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)\HOOKS=(base udev autodetect keyboard keymap modconf block encrypt filesystems fsck)\g" /etc/mkinitcpio.conf
