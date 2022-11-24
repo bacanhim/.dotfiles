@@ -25,7 +25,7 @@ directories in your home directory, and only symlink actual files.
 #### Graphical environment
 
 - Window manager: [bspwm](https://github.com/baskerville/bspwm)
-- Compositor: [picom](https://github.com/yshui/picom) - not being used;
+- Compositor: [picom](https://github.com/yshui/picom)
 - Bar: [Polybar](https://github.com/polybar/polybar)
 - Notification daemon: [xfce4-notifyd](https://docs.xfce.org/apps/notifyd/start)
 - Program launcher: [Rofi](https://github.com/davatorium/rofi)

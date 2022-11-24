@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Startup commands
-#pidof -sx picom || picom --experimental-backends &
+pidof -sx picom || picom &
 pidof -sx sxhkd || sxhkd &
 pidof -sx /usr/lib/xfce4/notifyd/xfce4-notifyd || /usr/lib/xfce4/notifyd/xfce4-notifyd &
 # Initialize desktops
