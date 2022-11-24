@@ -4,13 +4,13 @@ configuration {
 }
 
 * {
-    background:                  #1a1a1a;
-    foreground:                  #ffffff;
+    background:                  #121212;
+    foreground:                  #E8E3E3;
 
     normal-background:           transparent;
     normal-foreground:           @foreground;
     selected-normal-background:  #bcecff20;
-    selected-normal-foreground:  #bcecff;
+    selected-normal-foreground:  #66ecff;
     alternate-normal-background: @normal-background;
     alternate-normal-foreground: @normal-foreground;
 
@@ -28,7 +28,7 @@ configuration {
     alternate-active-background: @active-background;
     alternate-active-foreground: @active-foreground;
 
-    separatorcolor:              #bcecff;
+    separatorcolor:              #66ecff;
     background-color:            transparent;
     border-color: @selected-normal-foreground;
 }

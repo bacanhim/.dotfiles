@@ -1,19 +1,19 @@
 [colors]
-background = #222
-background-alt = #444
-foreground = #dfdfdf
+background = #121212
+background-alt = #424242
+foreground = #E8E3E3
 foreground-alt = #555
 icons-red = #f00
 green-spotify = #1DB954
 icons-grey = #c6c6c6
 
-primary = #bcecff
-secondary = #bcecff
+primary = #11ecff
+secondary = #11ecff
 alert = #bd2c40
 
 [bar/top]
 width = 100%
-height = 29
+height = 3%
 radius = 0.0
 fixed-center = true
 wm-restack = bspwm
@@ -32,18 +32,17 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = sans-serif:size=12;3
+font-0 = sans-serif:size=13;3
 font-1 = Font Awesome 5 Free:pixelsize=12;2
 font-2 = Font Awesome 5 Free Solid:pixelsize=12;2
 font-3 = Font Awesome 5 Brands:pixelsize=12;2
 font-4 = unifont:fontformat=truetype:size=8:antialias=false;0
 
-modules-left = bspwm xwindow
-modules-center = date
-modules-right = spotify pulseaudio cpu memory pacman-updates
+modules-left = bspwm
+modules-right = spotify weather cpu memory pulseaudio pacman-updates date
 
 tray-position = right
-tray-padding = 9
+tray-padding = 8
 
 separator = " "
 separator-padding = 1
@@ -58,19 +57,24 @@ interval = 600
 label = "  %output%"
 format-prefix = 
 format-prefix-foreground = ${colors.icons-red}
-click-right = exec alacritty -e yay -Syu --noconfirm
+click-right = exec alacritty -e paru -Syu --noconfirm
 
 [module/spotify]
 type = custom/script
+tail = true
 interval = 1
+
+format = <label>
 format-prefix = " "
 format-prefix-foreground = ${colors.green-spotify}
-format = <label>
-exec = python $HOME/.config/polybar/scripts/spotify.py -f '{artist}: {song}'
+label = %output:0:30:…%
+
+exec = playerctl metadata --format "{{artist}} - {{title}}" --player spotify
+exec-if = playerctl -l | grep spotify
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+label = %title:0:50:...%
 
 [module/bspwm]
 type = internal/bspwm
@@ -114,7 +118,7 @@ type = internal/memory
 interval = 1
 format-prefix = " "
 format-prefix-foreground = ${colors.icons-grey}
-label = %gb_used%
+label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
@@ -141,7 +145,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 [module/date]
 type = internal/date
 
-date = %a, %e %b
+date = %e %b
 date-alt = %A, %e %B, %Y
 
 time = %H:%M
