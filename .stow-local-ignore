@@ -2,5 +2,8 @@
 screenshots
 README.md
 LICENSE
-install_script.sh
+base.sh
+bspwm.sh
+dev.sh
+misc.sh
 .gitignore
