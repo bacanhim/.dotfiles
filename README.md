@@ -4,7 +4,7 @@
     </blockquote>
 </div>
 
-![paru htop neofetch](./screenshots/desktop1.png)
+![yay htop neofetch](./screenshots/desktop1.png)
 
 ## Installation
 
