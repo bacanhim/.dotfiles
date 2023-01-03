@@ -58,9 +58,9 @@ arch-chroot /mnt chsh -s $(which zsh)
 arch-chroot /mnt echo "bacanhim ALL=(ALL) NOPASSWD:ALL" >>/mnt/etc/sudoers
 arch-chroot /mnt runuser -l bacanhim -c 'ssh-keygen -t ed25519 -C "Gitlab"'
 arch-chroot /mnt systemctl enable NetworkManager
-arch-chroot /mnt sed -i "s\bacanhim ALL=(ALL) NOPASSWD:ALL\ \g" /etc/sudoers
 echo "DOWNLOADING DOTFILES"
-arch-chroot /mnt cd /home/bacanhim/ && git clone https://github.com/bacanhim/.dotfiles.git
+arch-chroot /mnt runuser -l bacanhim -c 'cd /home/bacanhim/ && git clone https://github.com/bacanhim/.dotfiles.git'
+arch-chroot /mnt sed -i "s\bacanhim ALL=(ALL) NOPASSWD:ALL\ \g" /etc/sudoers
 echo "ALL DONE REBOOTING"
 sleep 2
 reboot
