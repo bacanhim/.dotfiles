@@ -10,7 +10,7 @@ pacman -S xorg xorg-server nvidia-dkms nvidia-utils nvidia-settings
 #yay install
 cd /tmp && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si --noconfirm
 #AUR PGK
-yain chili-sddm-theme betterlockscreen-git ttf-font-awesome-5 --noconfirm
+yain chili-sddm-theme ttf-font-awesome-5 --noconfirm
 #dotfiles
 cd /home/bacanhim/.dotfiles && stow --target="$HOME" --no-folding .
 cp -R /usr/share/grub/themes/* /boot/grub/themes/
