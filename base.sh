@@ -49,7 +49,7 @@ arch-chroot /mnt passwd bacanhim
 arch-chroot /mnt sed -i "s\MODULES=()\MODULES=(btrfs)\g" /etc/mkinitcpio.conf
 arch-chroot /mnt sed -i "s\BINARIES=()\BINARIES=(/usr/bin/btrfs)\g" /etc/mkinitcpio.conf
 arch-chroot /mnt sed -i "s\HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)\HOOKS=(base udev autodetect keyboard keymap modconf block encrypt filesystems fsck)\g" /etc/mkinitcpio.conf
-arch-chroot /mnt sed -i 's\GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"\GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet cryptdevice=/dev/'"${Disk}"'2:lynx root=/dev/mapper/lynx"\g' /etc/default/grub
+arch-chroot /mnt sed -i 's\GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"\GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia_drm.modeset=1 cryptdevice=/dev/'"${Disk}"'2:lynx root=/dev/mapper/lynx"\g' /etc/default/grub
 arch-chroot /mnt mkinitcpio -p linux
 arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --removable
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg

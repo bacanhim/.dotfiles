@@ -6,7 +6,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 #utilities
 pacman -S firefox teamspeak3 discord spotify-launcher flameshot arandr ranger neofetch stow
 #xorg and video-drivers
-pacman -S xorg xorg-server nvidia nvidia-utils nvidia-settings
+pacman -S xorg xorg-server nvidia-dkms nvidia-utils nvidia-settings
 #yay install
 cd /tmp && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si --noconfirm
 #AUR PGK
