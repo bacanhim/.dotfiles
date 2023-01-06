@@ -1,14 +1,12 @@
 #!/bin/bash
 #theming, fonts and some background utils
 pacman -S polkit-gnome gnome-keyring libsecret libgnome-keyring mpv pacman-contrib alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber blueman playerctl capitaine-cursors ttf-cascadia-code ttf-fira-code noto-fonts materia-gtk-theme papirus-icon-theme grub-theme-vimix zsh-theme-powerlevel10k zsh-syntax-highlighting zsh-autosuggestions ntfs-3g gvfs nfs-utils ntp unzip tar duf zip btop packagekit acpi acpi_call acpid --noconfirm
-#oh my zsh install
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 #utilities
 pacman -S firefox teamspeak3 discord spotify-launcher flameshot arandr ranger neofetch stow
 #xorg and video-drivers
 pacman -S xorg xorg-server nvidia-dkms nvidia-utils nvidia-settings
-#yay install
-cd /tmp && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si --noconfirm
+#yay install not needed on endeavour
+# cd /tmp && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si --noconfirm
 #AUR PGK
 yain chili-sddm-theme ttf-font-awesome-5 --noconfirm
 #dotfiles
@@ -18,6 +16,9 @@ cp -R /usr/share/grub/themes/* /boot/grub/themes/
 grub-mkconfig -o /boot/grub/grub.cfg
 sed -i 's\Current=\Current=chili\g' /usr/lib/sddm/sddm.conf.d/default.conf #sddm theme
 sed -i 's\#GRUB_THEME="/path/to/gfxtheme"\GRUB_THEME="/boot/grub/themes/Vimix/theme.txt"\g' /etc/default/grub
+
+#oh my zsh install
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 #laptop
 # systemctl enable auto-cpufreq.service
