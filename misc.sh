@@ -13,9 +13,9 @@ yain chili-sddm-theme ttf-font-awesome-5 oh-my-zsh-git --noconfirm
 cd /home/bacanhim/.dotfiles && stow --target="$HOME" --no-folding .
 cp -R /usr/share/grub/themes/* /boot/grub/themes/
 #grub-theme
-grub-mkconfig -o /boot/grub/grub.cfg
 sed -i 's\Current=\Current=chili\g' /usr/lib/sddm/sddm.conf.d/default.conf #sddm theme
 sed -i 's\#GRUB_THEME="/path/to/gfxtheme"\GRUB_THEME="/boot/grub/themes/Vimix/theme.txt"\g' /etc/default/grub
+grub-mkconfig -o /boot/grub/grub.cfg
 
 #laptop
 # systemctl enable auto-cpufreq.service
