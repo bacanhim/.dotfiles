@@ -7,7 +7,7 @@ fi
 
 # Created by newuser for 5.8
 
-ZSH=/root/.oh-my-zsh
+ZSH=/usr/share/oh-my-zsh
 
 DISABLE_AUTO_UPDATE="true"
 
