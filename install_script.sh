@@ -1,6 +1,6 @@
 sudo dnf update
 sudo dnf copr enable bzaidan/Hyprland
-sudo dnf install zsh zsh-syntax-highlighting zsh-autosuggestions @virtualization stow hyprland swaybg alacritty wofi
+sudo dnf install zsh zsh-syntax-highlighting zsh-autosuggestions @virtualization stow hyprland swaybg alacritty wofi slurp jetbrains-mono-fonts pavucontrol
 cd ~/.dotfiles/
 stow --target="$HOME" --no-folding .
 chsh -s $(which zsh)
